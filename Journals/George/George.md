@@ -19,7 +19,7 @@
 
 * This is the class diagram I created: 
 
-	![project image]( )
+	![project image](Images/Screen%20Shot%202021-04-22%20at%208.30.36%20PM.png)
 
 
 * Since this is the first week of the project, we did not face much challenges.
