@@ -3,7 +3,7 @@
 
 ## Week #1 Status Report
 
-* For this week my group and I met to discuss the project and the first tasks we could do. We also talked about our strengths and weaknesses so we could decide whho will work on the frontend and will work on the backend.
+* For this week my team and I met to discuss the project and the first tasks we could do. We also talked about our strengths and weaknesses so we could decide whho will work on the frontend and will work on the backend.
 
 * We created columns in github to add cards:
   * To Do
