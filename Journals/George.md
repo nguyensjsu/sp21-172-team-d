@@ -1,2 +1,1 @@
-# Team Project (Replace with your Team Name and Journal)
-.
+# CMPE 172 Project Journal
