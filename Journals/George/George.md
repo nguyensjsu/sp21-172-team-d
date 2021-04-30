@@ -39,4 +39,8 @@
 * Progress:
 	* I added the Starbucks nodeJS example to the repository as a starting point for the cashier's portion of our project. 
 
-	
+	* Card I worked on:
+		
+
+
+	* Commit: https://github.com/nguyensjsu/sp21-172-team-d/commit/ab56b85089248ba242a10e30ff2c1275e79bfcfa
