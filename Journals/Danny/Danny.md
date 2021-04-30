@@ -14,3 +14,16 @@ https://github.com/nguyensjsu/sp21-172-team-d/commit/300813f0c18ca357bb6be188c4d
 ### Challenges and Resolutions
 
 The main challenge this week was understanding the requirements of the project. It usually takes me a bit of time to wrap my head around the many different aspects of an application I am about to build, and this project is heavy on the architectural/integration side of things. I plan to create a few UI mockups just to help us get started with our design.
+
+
+## Week 2
+
+![week2](images/week2.png)
+
+### Accomplishments
+
+This week I made progress on the customer facing online store. I set up the project and will be using node.js for routing and handlebars for rendering views. I started implementing authentication using firebase.
+
+### Challenges and Resolutions
+
+The main challenge this week was deciding what stack to use to build the online store. I almost decided to use the react framework to build the frontend, but i decided to stick with vanilla javascript/html just so it is easier for teammates to collaborate and not spend time learning an entirely new framework. I also spent time thinking about how authentication would be handled and I came across firebase. The integration is going smoothly so far, and there is good documentation.
