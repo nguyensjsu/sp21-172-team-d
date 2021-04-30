@@ -41,6 +41,6 @@
 
 	* Card I worked on:
 		
-
+	![project image](Images/Screen%20Shot%202021-04-29%20at%208.31.58%20PM.png)
 
 	* Commit: https://github.com/nguyensjsu/sp21-172-team-d/commit/ab56b85089248ba242a10e30ff2c1275e79bfcfa
