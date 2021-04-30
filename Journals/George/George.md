@@ -24,3 +24,32 @@
 
 * Since this is the first week of the project, we did not face much challenges.
 
+
+
+## Week #2 Status Report
+
+* This week we had a zoom meeting and we divided up what part of the project we will be working on.
+
+* We decided that I will be working on the Cashier's app part. 
+
+* Our group will try to use stripe instead of cybersource.
+
+* We added more cards to the project in github.
+
+* Progress:
+	* I added the Starbucks nodeJS professor example to the repository as a starting point for the cashier's portion of the project. 
+
+	* I have been thinking on the design for the cashier's app
+
+	* We started working with stripe so we can integrate it to the project soon
+
+
+* Card I worked on:
+		
+	![project image](Images/Screen%20Shot%202021-04-29%20at%208.31.58%20PM.png)
+
+* Commit: https://github.com/nguyensjsu/sp21-172-team-d/commit/ab56b85089248ba242a10e30ff2c1275e79bfcfa
+
+
+* Challenges: 
+	* Time has been a little of a challenge

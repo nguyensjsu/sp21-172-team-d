@@ -1,4 +1,4 @@
-# Team Project (Replace with your Team Name and Journal)
+# Team D Journal (Team Project)
 
 Team Journals should include
 - Overall Architecture Diagram of your Cloud Deployment
