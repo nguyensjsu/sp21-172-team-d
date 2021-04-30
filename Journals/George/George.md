@@ -39,8 +39,13 @@
 * Progress:
 	* I added the Starbucks nodeJS professor example to the repository as a starting point for the cashier's portion of our project. 
 
-	* Card I worked on:
+	* I have been thinking on the design for the cashier's app
+
+	* We started working with stripe so we can integrate it to the project soon
+
+
+* Card I worked on:
 		
 	![project image](Images/Screen%20Shot%202021-04-29%20at%208.31.58%20PM.png)
 
-	* Commit: https://github.com/nguyensjsu/sp21-172-team-d/commit/ab56b85089248ba242a10e30ff2c1275e79bfcfa
+* Commit: https://github.com/nguyensjsu/sp21-172-team-d/commit/ab56b85089248ba242a10e30ff2c1275e79bfcfa
