@@ -52,4 +52,4 @@
 
 
 * Challenges: 
-	* Time has been a little of a challenge since at this point of the semester our classes are  giving a lot of assignments and finding time to do all has been hard.
+	* Time has been a little of a challenge
