@@ -6,7 +6,7 @@
 
 ## Week 2
 
-### We had a team meeting. I started working on implementing the Stripe API
+### We had a team meeting. I started working on implementing the Stripe API, I couldn't add it to our current directory because of issues with git as seen with my excessive amounts of commit
 #### Shows amount the customer will pay
 ![amount](images/amount.png)
 
