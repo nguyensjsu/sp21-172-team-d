@@ -23,8 +23,8 @@ app.get('/', (req, res) => {
   res.render('signup');
 });
 
-app.get('/login', (req, res) => {
-  res.render('signup');
+app.get('/signin', (req, res) => {
+  res.render('signin');
 });
 
 app.get('/signup', (req, res) => {
@@ -40,7 +40,7 @@ app.get('/profile', (req, res) => {
     .then(() => {
       res.render('main');
     })
-    .catch((error) => res.redirect('./login'));
+    .catch((error) => res.redirect('./signin'));
 });
 
 app.post('/login', (req, res) => {
@@ -61,7 +61,7 @@ app.post('/login', (req, res) => {
 
 app.get('/logout', (req, res) => {
   res.clearCookie('session');
-  res.redirect('/login');
+  res.redirect('/signin');
 });
 
 app.listen(port);
