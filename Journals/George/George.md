@@ -32,3 +32,5 @@
 
 * We decided that I will be working on the Cashier's app part. 
 
+* Our group will try to use stripe instead of cybersource.
+
