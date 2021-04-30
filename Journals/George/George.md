@@ -24,3 +24,9 @@
 
 * Since this is the first week of the project, we did not face much challenges.
 
+
+
+## Week #2 Status Report
+
+* This week we had a zoom meeting and we sivided up what part of the project we will be working on.
+
