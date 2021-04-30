@@ -34,3 +34,5 @@
 
 * Our group will try to use stripe instead of cybersource.
 
+* We added more cards to the project in github.
+
