@@ -39,7 +39,7 @@
             />
           </div>
         </fieldset>
-        <button>Sign up</button>
+        <button>Sign in</button>
       </form>
       <script>
         console.log('inside js');
@@ -68,7 +68,8 @@
               firebase
                 .auth()
                 .signInWithEmailAndPassword(login, password)
-                .then((user) => {
+                .then((userCredential) => {
+                  let user = userCredential.user;
                   return user.getIdToken().then((idToken) => {
                     return fetch('/login', {
                       method: 'POST',
