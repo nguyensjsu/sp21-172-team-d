@@ -28,7 +28,7 @@
 
 ## Week #2 Status Report
 
-* This week we had a zoom meeting and we sivided up what part of the project we will be working on.
+* This week we had a zoom meeting and we divided up what part of the project we will be working on.
 
 * We decided that I will be working on the Cashier's app part. 
 
