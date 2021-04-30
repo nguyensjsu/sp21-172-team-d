@@ -24,6 +24,9 @@ The main challenge this week was understanding the requirements of the project. 
 
 This week I made progress on the customer facing online store. I set up the project and will be using node.js for routing and handlebars for rendering views. I started implementing authentication using firebase.
 
+code commit: 
+https://github.com/nguyensjsu/sp21-172-team-d/commit/955f34ccb7dff8429c2c4d3d34bfb70ad7f639c6
+
 ### Challenges and Resolutions
 
 The main challenge this week was deciding what stack to use to build the online store. I almost decided to use the react framework to build the frontend, but i decided to stick with vanilla javascript/html just so it is easier for teammates to collaborate and not spend time learning an entirely new framework. I also spent time thinking about how authentication would be handled and I came across firebase. The integration is going smoothly so far, and there is good documentation.
