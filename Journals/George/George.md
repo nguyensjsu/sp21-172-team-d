@@ -37,7 +37,7 @@
 * We added more cards to the project in github.
 
 * Progress:
-	* I added the Starbucks nodeJS example to the repository as a starting point for the cashier's portion of our project. 
+	* I added the Starbucks nodeJS professor example to the repository as a starting point for the cashier's portion of our project. 
 
 	* Card I worked on:
 		
