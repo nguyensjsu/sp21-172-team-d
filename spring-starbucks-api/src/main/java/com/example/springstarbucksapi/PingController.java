@@ -1,19 +1,43 @@
 package com.example.springstarbucksapi;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
+import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import lombok.Data;
+import lombok.AllArgsConstructor;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+/*
+	GET 	/ping
+		Ping Health Check.
+
+		{
+		  "Test": "Starbucks API version 1.0 alive!"
+		}		
+*/
 @RestController
-public class PingController {
-    class Ping {
-        private String test;
-        public Ping(String msg) { this.test = msg; }
-        public String getTest() { return this.test; }
-    }
+class PingController {
+
+	@Data
+	@AllArgsConstructor
+	class Ping {
+		@NotNull
+		private String message;
+	}
+
 
     @GetMapping("/ping")
     public Ping ping() {
-        return new Ping("Starbucks API version 1.0 is alive!");
+		return new Ping("Starbucks API version 1.0 alive!");
     }
 }
