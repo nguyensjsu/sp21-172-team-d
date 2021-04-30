@@ -5,13 +5,17 @@
 ----
 
 ## Week 2
+
 ### We had a team meeting. I started working on implementing the Stripe API
 #### Shows amount the customer will pay
-![amount](Images/amount.png)
+![amount](images/amount.png)
 
 #### #### Checkout page that accepts cards
-![checkout](Images/checkout.png)
+![checkout](images/checkout.png)
 
 #### Stripe Dashboard
-![stripe-dash](Images/stripe-dash.png)
+![stripe-dash](images/stripe-dash.png)
+
+#### Card Worked on
+![card](images/card.png)
 -----
