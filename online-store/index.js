@@ -1,6 +1,5 @@
 const express = require('express');
 const fetch = require('node-fetch');
-const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
