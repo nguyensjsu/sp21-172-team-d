@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Customer{
     private @Id String customerId;
-
+    private Integer rewardsPoints;
     @OneToMany(fetch = FetchType.LAZY,
     cascade = CascadeType.ALL)
     @JoinColumn(name="cardNumber")
