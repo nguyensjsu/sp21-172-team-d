@@ -6,6 +6,9 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.springstarbucksapi.repository.CardRepository;
+import com.example.springstarbucksapi.repository.CustomerRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +27,9 @@ public class OrderController {
 
     @Autowired
     private CardRepository cardRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
 
     class Message {
         private String status;

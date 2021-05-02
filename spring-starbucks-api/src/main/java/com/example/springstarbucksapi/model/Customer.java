@@ -26,5 +26,8 @@ public class Customer{
     cascade = CascadeType.ALL)
     @JoinColumn(name="cardNumber")
     private List<StarbucksCard> cards;
-
+    
+    public void addCard(Starbucks card){
+        cards.add(card);
+    }
 }
