@@ -6,8 +6,6 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.springstarbucksapi.repository.CardRepository;
-import com.example.springstarbucksapi.repository.CustomerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +24,7 @@ public class OrderController {
     private HashMap<String, Order> orders = new HashMap<>();
 
     @Autowired
-    private CardRepository cardRepository;
+    private CardRepository cardRepository; 
 
     @Autowired
     private CustomerRepository customerRepository;

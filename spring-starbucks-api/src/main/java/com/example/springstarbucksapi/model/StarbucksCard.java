@@ -13,6 +13,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.*;
 @Entity
 @Table(name="STARBUCKS_CARD")
 @Data
@@ -24,8 +25,8 @@ public class StarbucksCard {
     @Column(nullable = false) private double balance;
     @Column(nullable = false) private boolean active;
     @Column(nullable = false) private String status;
-    
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="customerId")
     private Customer customer;
 

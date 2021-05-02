@@ -2,6 +2,7 @@ package com.example.springstarbucksapi;
 
 import java.util.Set;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,12 +23,12 @@ import lombok.RequiredArgsConstructor;
 public class Customer{
     private @Id String customerId;
     private Integer rewardsPoints;
+
     @OneToMany(fetch = FetchType.LAZY,
     cascade = CascadeType.ALL)
     @JoinColumn(name="cardNumber")
-    private List<StarbucksCard> cards;
-    
-    public void addCard(Starbucks card){
+    private List<StarbucksCard> cards = new ArrayList<>();
+    public void addCard(StarbucksCard card){
         cards.add(card);
     }
 }

@@ -5,10 +5,6 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.springstarbucksapi.model.Customer;
-
-// import com.example.springstarbucksapi.model.Customer;
-// import com.example.springstarbucksapi.repository.CustomerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +33,8 @@ public class CustomerController {
     @ResponseStatus(HttpStatus.CREATED)
     Customer newCustomer(@RequestBody Customer customer){ //Needs to contain the customerId in the body of the request
         System.out.println("Creating Customer: #" + customer.getCustomerId());
+        customer.setRewardsPoints(0);
+
         StarbucksCard newCard = new StarbucksCard();
 
         Random random = new Random();
@@ -47,9 +45,11 @@ public class CustomerController {
         newCard.setBalance(20.00);
         newCard.setActive(true);
         newCard.setStatus("New Card");
-        cardRepository.save(newCard);
+        newCard.setCustomer(customer);
         customer.addCard(newCard);
         Customer new_customer = repository.save(customer);
+        cardRepository.save(newCard);
+        
         return new_customer;
     }
 
