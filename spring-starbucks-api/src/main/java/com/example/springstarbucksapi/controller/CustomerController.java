@@ -88,4 +88,9 @@ public class CustomerController {
         if(customer == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer Not Found.");
         return customer;
     }
+
+    @GetMapping("/customer/cards")
+    List<StarbucksCard> getCards(@RequestBody Customer customer){
+        return cardRepository.findByCustomer(customer); 
+    }
 }
