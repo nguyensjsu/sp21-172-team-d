@@ -1,4 +1,4 @@
-package com.example.springstarbucksapi;
+package com.example.springstarbucksapi.model;
 
 import java.util.Set;
 import java.util.List;

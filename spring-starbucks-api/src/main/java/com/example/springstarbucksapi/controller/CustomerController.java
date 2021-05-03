@@ -1,11 +1,12 @@
-package com.example.springstarbucksapi;
+package com.example.springstarbucksapi.controller;
 
 import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
-
+import com.example.springstarbucksapi.model.*;
+import com.example.springstarbucksapi.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -69,6 +70,7 @@ public class CustomerController {
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);
         customer.addCard(newCard);
+        System.out.println("Card information " + newCard);
         cardRepository.save(newCard);
         return newCard;
 
