@@ -24,11 +24,13 @@ public class Customer{
     private @Id String customerId;
     private Integer rewardsPoints;
 
-    @OneToMany(fetch = FetchType.LAZY,
-    cascade = CascadeType.ALL)
-    @JoinColumn(name="cardNumber")
-    private List<StarbucksCard> cards = new ArrayList<>();
-    public void addCard(StarbucksCard card){
-        cards.add(card);
-    }
+    // @OneToMany
+    // @JoinColumn(name="cardNumber")
+    // private List<StarbucksCard> cards = new ArrayList<>();
+    // public void addCard(StarbucksCard card){
+    //     cards.add(card);
+    // }
+    @OneToMany
+    @JoinColumn(name="id")
+	private List<StarbucksCard> starbucksCards = new ArrayList<>();
 }

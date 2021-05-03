@@ -26,7 +26,7 @@ public class StarbucksCard {
     @Column(nullable = false) private boolean active;
     @Column(nullable = false) private String status;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="customerId")
     private Customer customer;
 

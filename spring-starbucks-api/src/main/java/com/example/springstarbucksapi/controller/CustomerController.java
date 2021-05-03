@@ -69,7 +69,7 @@ public class CustomerController {
         newCard.setActive(true);
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);
-        customer.addCard(newCard);
+
         System.out.println("Card information " + newCard);
         cardRepository.save(newCard);
         return newCard;
