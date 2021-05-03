@@ -35,8 +35,30 @@ public class CustomerController {
         System.out.println("Creating Customer: #" + customer.getCustomerId());
         customer.setRewardsPoints(0);
 
-        StarbucksCard newCard = new StarbucksCard();
+        // StarbucksCard newCard = new StarbucksCard();
 
+        // Random random = new Random();
+        // int num = random.nextInt(900000000) + 100000000;
+        // int code = random.nextInt(900) + 100;
+        // newCard.setCardNumber(String.valueOf(num));
+        // newCard.setCardCode(String.valueOf(code));
+        // newCard.setBalance(20.00);
+        // newCard.setActive(true);
+        // newCard.setStatus("New Card");
+        // newCard.setCustomer(customer);
+        // customer.addCard(newCard);
+        Customer new_customer = repository.save(customer);
+        
+        
+        return new_customer;
+    }
+
+    @PostMapping("/customer/card")
+    @ResponseStatus(HttpStatus.CREATED)
+    StarbucksCard addCard(@RequestBody Customer customer){
+        System.out.println("Creating Card for Customer: #" + customer.getCustomerId());
+
+        StarbucksCard newCard = new StarbucksCard();
         Random random = new Random();
         int num = random.nextInt(900000000) + 100000000;
         int code = random.nextInt(900) + 100;
@@ -47,11 +69,11 @@ public class CustomerController {
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);
         customer.addCard(newCard);
-        Customer new_customer = repository.save(customer);
         cardRepository.save(newCard);
-        
-        return new_customer;
-    }
+        return newCard;
+
+     }
+
 
     @GetMapping("/customer")
     List<Customer> getCustomers(){
