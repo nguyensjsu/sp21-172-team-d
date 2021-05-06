@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Starbucks Online Store</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"
+    />
+    <script
+      src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"
+      defer
+    ></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <main>
+      <form id="login">
+        <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+          <legend class="ph0 mh0 fw6 clip">Sign In</legend>
+          <div class="mt3">
+            <label class="db fw4 lh-copy f6" for="email">Email address</label>
+            <input
+              class="pa2 input-reset ba bg-transparent w-100 measure"
+              type="email"
+              name="email"
+              id="email"
+            />
+          </div>
+          <div class="mt3">
+            <label class="db fw4 lh-copy f6" for="password">Password</label>
+            <input
+              class="b pa2 input-reset ba bg-transparent"
+              type="password"
+              name="password"
+              id="password"
+            />
+          </div>
+        </fieldset>
+        <button>Sign in</button>
+      </form>
+    </main>
+    <script src="/js/signin.js"></script>
+  </body>
+</html>
