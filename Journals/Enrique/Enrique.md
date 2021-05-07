@@ -9,7 +9,14 @@
 ![](images/api-via-domain.png)
   - Turns out it is an easy process to change a GCP external IP to a static address - there's just a dropdown.
 ![](images/static-gcp-ip.png)
-- That was a bit off-topic though.  I need to focus on getting pricing and rewards working in the back end in the next couple days, since I was too busy this week.
+- Pulled my new api code (update from lab6 to lab8)
+  - Working in branch user/epedrosa/lab8-api, based off of MySQLBranch
+  - Updated folder structure to match team repo (package subfolders)
+    - Tested API & made corrections (class scope, etc) so it still works
+  - WIP: Still comparing changes vs mysqlbranch
+- Abandoning CloudSQL, mainly because of price - I already had a GCP funding issue last week, and CloudSQL cost over $6 in a single day without even any apps attached to it.
+- Created ticket #15 from the card for rewards.  Added more implemntation details 
+![](images/week3-cards.png)
 
 ## Week 2
 - Started investigating Stripe as an alternative to CyberSource
