@@ -28,7 +28,7 @@
 
 ## Week #2 Status Report
 
-* This week we had a zoom meeting and we divided up what part of the project we will be working on.
+* This week we had a meeting and we divided up what part of the project we will be working on.
 
 * We decided that I will be working on the Cashier's app part. 
 
@@ -53,3 +53,13 @@
 
 * Challenges: 
 	* Time has been a little of a challenge
+
+
+## Week #3 Status Report
+
+* This week I worked on developing the cashier's app part of the project. I created it using spring and successfully created a simple application that can be used by the cashier.
+
+* Our group met this week to talk about our progress and coordinate when we should have the project ready to go and when we will meet to create the video that we will submit. 
+
+* Card I worked on:
+
