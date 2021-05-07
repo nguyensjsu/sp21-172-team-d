@@ -71,7 +71,7 @@
 	![project image](Images/Screen%20Shot%202021-05-06%20at%208.19.48%20PM.png)
 
 
-* Commit: https://github.com/nguyensjsu/sp21-172-team-d/commit/a77bc78fc8779abc1479809bfe57f6066a9e1186#diff-14a74e7afeeb6dd68889a3cf142ca5c6c382a1ae466b29d28ec8c75a3a783449
+* Commits: https://github.com/nguyensjsu/sp21-172-team-d/commit/a77bc78fc8779abc1479809bfe57f6066a9e1186#diff-14a74e7afeeb6dd68889a3cf142ca5c6c382a1ae466b29d28ec8c75a3a783449
 
 
 * Challenges:
