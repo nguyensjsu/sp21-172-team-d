@@ -62,4 +62,9 @@
 * Our group met this week to talk about our progress and coordinate when we should have the project ready to go and when we will meet to create the video that we will submit. 
 
 * Card I worked on:
+	![project image](Images/Screen%20Shot%202021-05-06%20at%208.13.40%20PM.png)
+
+* Cashiers app working:
+
+	
 
