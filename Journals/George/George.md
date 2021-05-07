@@ -57,7 +57,7 @@
 
 ## Week #3 Status Report
 
-* This week I worked on developing the cashier's app part of the project. I created it using spring and successfully created a simple application that can be used by the cashier.
+* This week I worked on developing the cashier's app part of the project. I created it using spring and successfully created a simple application that can be used by the cashier. The only thing i need to do is update the application UI so that it can be used on a rectangular/square screen that are used by cashiers. We also need to connect the backend to the cashier's app.
 
 * Our group met this week to talk about our progress and coordinate when we should have the project ready to go and when we will meet to create the video that we will submit. 
 
