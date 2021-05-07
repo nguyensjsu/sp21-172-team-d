@@ -6,7 +6,7 @@ Team Journals should include
   - Cashier's App
     - What features were implemented?
       - Cashier can select the type, size of the drink but also select if the customer wants to add a type of milk and/or add any toppings like whipped cream, drizzle, etc.
-    - UI was based on the needs of a cashier when receiving an order and customize it on what the customer wants.
+    - UI was based on the needs of a cashier when receiving an order and customize it based on what the customer wants.
     - Spring Boot was used to develop the cashier's app
   - Backoffice Help Desk App
     - What features were implemented?
