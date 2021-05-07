@@ -1,5 +1,6 @@
 const express = require('express');
 const fetch = require('node-fetch');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
@@ -17,18 +18,18 @@ app.use(cookieParser());
 app.use(express.static('static'));
 
 //handblebar setup
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('signup');
+  res.sendFile(path.join(__dirname + '/views/signin.html'));
 });
 
 app.get('/signin', (req, res) => {
-  res.render('signin');
+  res.sendFile(path.join(__dirname + '/views/signin.html'));
 });
 
 app.get('/signup', (req, res) => {
-  res.render('signup');
+  res.sendFile(path.join(__dirname + '/views/signup.html'));
 });
 
 app.get('/profile', (req, res) => {
@@ -38,7 +39,7 @@ app.get('/profile', (req, res) => {
     .auth()
     .verifySessionCookie(sessionCookie, true)
     .then(() => {
-      res.render('main');
+      res.sendFile(path.join(__dirname + '/views/main.html'));
     })
     .catch((error) => res.redirect('./signin'));
 });

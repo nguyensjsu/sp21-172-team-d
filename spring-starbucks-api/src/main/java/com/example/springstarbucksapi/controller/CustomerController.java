@@ -9,6 +9,8 @@ import com.example.springstarbucksapi.model.*;
 import com.example.springstarbucksapi.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,27 +32,27 @@ public class CustomerController {
         this.repository = repository;
     }
 
+    @CrossOrigin(origins = "http://localhost:8900")
     @PostMapping("/customer")
     @ResponseStatus(HttpStatus.CREATED)
     Customer newCustomer(@RequestBody Customer customer){ //Needs to contain the customerId in the body of the request
         System.out.println("Creating Customer: #" + customer.getCustomerId());
         customer.setRewardsPoints(0);
 
-        // StarbucksCard newCard = new StarbucksCard();
+        StarbucksCard newCard = new StarbucksCard();
 
-        // Random random = new Random();
-        // int num = random.nextInt(900000000) + 100000000;
-        // int code = random.nextInt(900) + 100;
-        // newCard.setCardNumber(String.valueOf(num));
-        // newCard.setCardCode(String.valueOf(code));
-        // newCard.setBalance(20.00);
-        // newCard.setActive(true);
-        // newCard.setStatus("New Card");
-        // newCard.setCustomer(customer);
-        // customer.addCard(newCard);
+        Random random = new Random();
+        int num = random.nextInt(900000000) + 100000000;
+        int code = random.nextInt(900) + 100;
+        newCard.setCardNumber(String.valueOf(num));
+        newCard.setCardCode(String.valueOf(code));
+        newCard.setBalance(20.00);
+        newCard.setActive(true);
+        newCard.setStatus("New Card");
+        newCard.setCustomer(customer);
+        //customer.addCard(newCard);
         Customer new_customer = repository.save(customer);
-        
-        
+
         return new_customer;
     }
 
