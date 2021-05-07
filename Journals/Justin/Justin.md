@@ -21,7 +21,7 @@
 
 -----
 
-## Week 2
+## Week 3
 
 ### For this week, I was working on implementing the many-to-one/one-to-many relationships between our starbucks cards and users. I also switched over our database from h2 to MySQL.
 
