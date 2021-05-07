@@ -44,3 +44,4 @@ https://github.com/nguyensjsu/sp21-172-team-d/commit/3f89bd026402f9c467df59a18f4
 ### Challenges and Resolutions
 
 The main challenge was getting the online store to successfully make API calls to the Starbucks API. During testing, I had issues with CORS, and i had to make some tweaks to the API code to accept requests from the online store. I also had to refresh my memory on how request bodies were being mapped to a java object.
+Another challenge was realizing that the view templating engine i was using (EJS) could not load in javascript files that existed in a different directory. Because of this, I am no longer using EJS to render views, and instead will serve pure HTML to the user.
