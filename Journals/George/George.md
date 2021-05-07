@@ -66,5 +66,13 @@
 
 * Cashiers app working:
 
-	
+	![project image](Images/Screen%20Shot%202021-05-06%20at%208.18.31%20PM.png)
+
+	![project image](Images/Screen%20Shot%202021-05-06%20at%208.19.48%20PM.png)
+
+* Challenges:
+
+	* When I first ran the application, it kept giving me an error 
+		* Solution: I spent like an hour looking at the code and I noticed that I had an error in file name. The file name had a typo making it different than the class name inside the file. Fixing the name fixed the error.
+
 
