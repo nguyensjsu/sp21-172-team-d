@@ -1,12 +1,11 @@
 package com.example.springstarbucksapi.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.springstarbucksapi.model.*;
-import com.example.springstarbucksapi.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,6 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Random;
+
+import com.example.springstarbucksapi.model.*;
+import com.example.springstarbucksapi.repository.*;
+
 @RestController
 public class CustomerController {
     private final CustomerRepository repository;
@@ -41,13 +44,14 @@ public class CustomerController {
 
         StarbucksCard newCard = new StarbucksCard();
 
+        // TODO: Issue #18 Consolidate new card logic
         Random random = new Random();
         int num = random.nextInt(900000000) + 100000000;
         int code = random.nextInt(900) + 100;
         newCard.setCardNumber(String.valueOf(num));
         newCard.setCardCode(String.valueOf(code));
-        newCard.setBalance(20.00);
-        newCard.setActive(true);
+        newCard.setBalance(new BigDecimal("20.00"));
+        newCard.setActivated(true);
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);
         //customer.addCard(newCard);
@@ -67,8 +71,8 @@ public class CustomerController {
         int code = random.nextInt(900) + 100;
         newCard.setCardNumber(String.valueOf(num));
         newCard.setCardCode(String.valueOf(code));
-        newCard.setBalance(20.00);
-        newCard.setActive(true);
+        newCard.setBalance(new BigDecimal("20.00"));
+        newCard.setActivated(true);
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);
 
@@ -93,6 +97,6 @@ public class CustomerController {
 
     @GetMapping("/customer/cards")
     List<StarbucksCard> getCards(@RequestBody Customer customer){
-        return cardRepository.findByCustomer(customer); 
+        return cardRepository.findByCustomer(customer);
     }
 }

@@ -53,6 +53,7 @@ public class CardController {
     StarbucksCard newCard() {
         StarbucksCard newCard = new StarbucksCard();
 
+        // TODO: Issue #18 Consolidate new card logic
         long num = ThreadLocalRandom.current().nextLong(900000000L) + 10000000000L;
         int code = ThreadLocalRandom.current().nextInt(900) + 100;
 
