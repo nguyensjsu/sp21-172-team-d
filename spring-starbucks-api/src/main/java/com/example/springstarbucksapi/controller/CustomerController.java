@@ -65,6 +65,7 @@ public class CustomerController {
     StarbucksCard addCard(@RequestBody Customer customer){
         System.out.println("Creating Card for Customer: #" + customer.getCustomerId());
 
+        // TODO: #18
         StarbucksCard newCard = new StarbucksCard();
         Random random = new Random();
         int num = random.nextInt(900000000) + 100000000;
