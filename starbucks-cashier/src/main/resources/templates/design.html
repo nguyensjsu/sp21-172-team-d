@@ -24,7 +24,6 @@
     <div class="grid">
 <!-- end::formTag[] -->
 <!-- end::head[] -->
-      <div class="ingredient-group" id="drink" style = "position: relative; left: 150px; top:0px;">
         <!--style = "position: relative; left: 150px;"-->
 <!-- tag::designateWrap[] -->
       <h3 class="center">Type of drink:</h3>
@@ -53,7 +52,7 @@
       </div>
       </div>
 
-	  <div class="ingredient-group" id="toppings" style = "position: relative; left: 150px; top:-100px;"x>
+	  <div class="ingredient-group" id="toppings" style = "position: relative; left: 0px; top:-100px;">
       <h3 class="center">Toppings:</h3>
       <div th:each="ingredient : ${toppings}" class="center">
         <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
@@ -71,7 +70,7 @@
       </div>
       </div> -->
 
-      <div style = "position: relative; left: 380px; top:-100px;">
+      <div style = "position: relative; left: 270px; top:-100px;">
 
 
       <h3>Name of customer:</h3>
