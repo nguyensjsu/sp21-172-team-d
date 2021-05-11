@@ -1,4 +1,4 @@
-package com.example.springstarbucksapi;
+package com.example.springstarbucksapi.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.springstarbucksapi.model.*;
+import com.example.springstarbucksapi.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,7 +25,10 @@ public class OrderController {
     private HashMap<String, Order> orders = new HashMap<>();
 
     @Autowired
-    private CardRepository cardRepository;
+    private CardRepository cardRepository; 
+
+    @Autowired
+    private CustomerRepository customerRepository;
 
     class Message {
         private String status;

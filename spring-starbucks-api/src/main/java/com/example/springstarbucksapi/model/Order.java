@@ -1,4 +1,4 @@
-package com.example.springstarbucksapi;
+package com.example.springstarbucksapi.model;
 
 import java.util.Objects;
 import javax.persistence.Entity;

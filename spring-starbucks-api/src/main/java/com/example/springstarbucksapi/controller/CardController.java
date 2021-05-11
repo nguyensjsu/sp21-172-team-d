@@ -1,4 +1,4 @@
-package com.example.springstarbucksapi;
+package com.example.springstarbucksapi.controller;
 
 import java.util.List;
 import java.util.Random;
@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
+import com.example.springstarbucksapi.model.*;
+import com.example.springstarbucksapi.repository.*;
 @RestController
 public class CardController {
     private final CardRepository repository;

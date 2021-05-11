@@ -1,4 +1,4 @@
-package com.example.springstarbucksapi;
+package com.example.springstarbucksapi.model;
 
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -10,10 +10,12 @@ import javax.persistence.Index;
 import javax.persistence.Table;
 
 import lombok.Data;
-import lombok. RequiredArgsConstructor;
-
+import lombok.RequiredArgsConstructor;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.*;
 @Entity
-@Table(indexes = @Index(name = "altIndex", columnList = "cardNumber", unique = true))
+@Table(name="STARBUCKS_CARD")
 @Data
 @RequiredArgsConstructor
 public class StarbucksCard {
@@ -23,4 +25,9 @@ public class StarbucksCard {
     @Column(nullable = false) private double balance;
     @Column(nullable = false) private boolean active;
     @Column(nullable = false) private String status;
+
+    @ManyToOne
+    @JoinColumn(name="customerId")
+    private Customer customer;
+
 }
