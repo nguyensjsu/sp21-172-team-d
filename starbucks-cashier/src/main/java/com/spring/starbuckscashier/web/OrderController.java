@@ -49,9 +49,5 @@ public class OrderController {
     log.info("Order submitted: " + order);
     return "redirect:/";
   }
-//end::handlePostWithValidation[]
-  
-//tag::baseClass[]
   
 }
-//end::baseClass[]

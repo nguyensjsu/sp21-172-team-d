@@ -10,7 +10,7 @@
 
   <body>
     <h1>Customize Drink</h1>
-    <img th:src="@{/images/StarbucksLogo.png}" th:class="center"/>
+   <!-- <img th:src="@{/images/StarbucksLogo.png}" th:class="center"/-->
 
 <!-- tag::formTag[] -->
     <form method="POST" th:object="${design}">
@@ -24,11 +24,11 @@
     <div class="grid">
 <!-- end::formTag[] -->
 <!-- end::head[] -->
-      <div class="ingredient-group" id="drink" >
+      <div class="ingredient-group" id="drink" style = "position: relative; left: 150px; top:0px;">
         <!--style = "position: relative; left: 150px;"-->
 <!-- tag::designateWrap[] -->
-      <h3>Type of drink:</h3>
-      <div th:each="ingredient : ${drink}">
+      <h3 class="center">Type of drink:</h3>
+      <div th:each="ingredient : ${drink}" class="center">
         <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
         <span th:text="${ingredient.name}">INGREDIENT</span><br/>
       </div>
@@ -53,9 +53,9 @@
       </div>
       </div>
 
-	  <div class="ingredient-group" id="toppings" style = "position: relative; left: 0px; top:-100px;"x>
-      <h3>Toppings:</h3>
-      <div th:each="ingredient : ${toppings}">
+	  <div class="ingredient-group" id="toppings" style = "position: relative; left: 150px; top:-100px;"x>
+      <h3 class="center">Toppings:</h3>
+      <div th:each="ingredient : ${toppings}" class="center">
         <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
         <span th:text="${ingredient.name}">INGREDIENT</span><br/>
       </div>
@@ -71,7 +71,7 @@
       </div>
       </div> -->
 
-      <div style = "position: relative; left: 220px; top:-100px;">
+      <div style = "position: relative; left: 380px; top:-100px;">
 
 
       <h3>Name of customer:</h3>
