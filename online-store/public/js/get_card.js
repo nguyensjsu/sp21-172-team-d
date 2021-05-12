@@ -11,7 +11,7 @@ function get_card() {
     .then((data) => {
       let card = document.getElementById('card');
       console.log(data);
-      populate_card(data, card, false);
+      populate_card(data, card, false, data.id);
     });
 }
 

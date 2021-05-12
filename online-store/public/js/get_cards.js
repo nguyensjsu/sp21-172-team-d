@@ -29,8 +29,9 @@ function get_cards() {
         .then((data) => {
           let cardList = document.getElementById('card-list');
           console.log(data);
+
           data.forEach((element) => {
-            populate_card(element, cardList, true);
+            populate_card(element, cardList, true, element.id);
           });
         });
     });

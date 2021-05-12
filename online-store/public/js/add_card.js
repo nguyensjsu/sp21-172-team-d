@@ -9,7 +9,40 @@ add_card = () => {
         .then((res) => res.json())
         .then((card) => {
           console.log(card);
-          window.location.reload();
+          let cardList = document.getElementById('card-list');
+          let container = document.createElement('div');
+          container.id = card.cardNumber;
+
+          let info = document.createElement('div');
+          info.className = 'container flex-start no-padding';
+
+          let balance = document.createElement('span');
+          balance.id = 'balance';
+          balance.className = 'item card-text';
+          balance.textContent = `$${card.balance}`;
+
+          info.appendChild(balance);
+
+          let manage = document.createElement('span');
+          manage.className = 'container item';
+
+          let manageLink = document.createElement('a');
+          manageLink.className = 'green-text text-darken-3 nav-text';
+          manageLink.textContent = 'manage';
+          manageLink.setAttribute(
+            'href',
+            `http://localhost:8900/cards/${card.cardNumber}`
+          );
+          manage.appendChild(manageLink);
+          info.appendChild(manage);
+
+          let img = document.createElement('img');
+          img.src = `https://source.unsplash.com/featured/1600x900/?water,sky,gradient`;
+
+          container.appendChild(info);
+          container.appendChild(img);
+          cardList.appendChild(container);
+          //window.location.reload();
         });
     });
 };

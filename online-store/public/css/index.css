@@ -11,7 +11,7 @@ main {
 .grid-container {
   display: grid;
   grid-gap: 40px;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   justify-items: center;
   align-items: center;
 }
@@ -51,8 +51,9 @@ img {
   /* display: block;
   margin: auto; */
   padding: 1vw 0 1vw 0;
-  max-width: 100%;
+  max-width: 450px;
   height: auto;
+  border-radius: 80px;
 }
 
 .item a {
