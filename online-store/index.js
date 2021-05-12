@@ -21,7 +21,7 @@ app.use(express.static(__dirname + '/public'));
 //app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/views/signin.html'));
+  res.sendFile(path.join(__dirname + '/views/signup.html'));
 });
 
 app.get('/signin', (req, res) => {
