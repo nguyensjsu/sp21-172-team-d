@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Index;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import javax.persistence.JoinColumn;
@@ -26,6 +28,7 @@ public class StarbucksCard {
     @Column(nullable = false) private boolean active;
     @Column(nullable = false) private String status;
 
+    @JsonIgnore 
     @ManyToOne
     @JoinColumn(name="customerId")
     private Customer customer;

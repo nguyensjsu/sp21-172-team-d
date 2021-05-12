@@ -1,5 +1,6 @@
 package com.example.springstarbucksapi.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -16,11 +17,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.beans.factory.annotation.Autowired;
-import java.util.Random;
+
 @RestController
 public class CustomerController {
     private final CustomerRepository repository;
@@ -46,20 +47,28 @@ public class CustomerController {
         int code = random.nextInt(900) + 100;
         newCard.setCardNumber(String.valueOf(num));
         newCard.setCardCode(String.valueOf(code));
-        newCard.setBalance(20.00);
+        newCard.setBalance(0.0);
         newCard.setActive(true);
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);
-        //customer.addCard(newCard);
-        Customer new_customer = repository.save(customer);
 
+        //create new card list 
+        List<StarbucksCard> cards = new ArrayList<>();
+        cards.add(newCard);
+        customer.setStarbucksCards(cards);
+
+        Customer new_customer = repository.save(customer);
         return new_customer;
     }
 
-    @PostMapping("/customer/card")
+    @CrossOrigin(origins = "http://localhost:8900")
+    @PostMapping("/customer/card/{customerId}")
     @ResponseStatus(HttpStatus.CREATED)
-    StarbucksCard addCard(@RequestBody Customer customer){
-        System.out.println("Creating Card for Customer: #" + customer.getCustomerId());
+    StarbucksCard addCard(@PathVariable String customerId){
+        System.out.println("Creating Card for Customer: #" + customerId);
+        Customer customer = repository.findByCustomerId(customerId);
+
+        if(customer == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer Not Found.");
 
         StarbucksCard newCard = new StarbucksCard();
         Random random = new Random();
@@ -67,32 +76,41 @@ public class CustomerController {
         int code = random.nextInt(900) + 100;
         newCard.setCardNumber(String.valueOf(num));
         newCard.setCardCode(String.valueOf(code));
-        newCard.setBalance(20.00);
+        newCard.setBalance(0.0);
         newCard.setActive(true);
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);
 
+        List<StarbucksCard> cards = customer.getStarbucksCards();
+        cards.add(newCard);
+        customer.setStarbucksCards(cards);
         System.out.println("Card information " + newCard);
-        cardRepository.save(newCard);
+    
+        repository.save(customer);
         return newCard;
 
      }
-
 
     @GetMapping("/customer")
     List<Customer> getCustomers(){
         return repository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8900")
     @GetMapping("/customer/{customerId}")
     Customer getCustomer(@PathVariable String customerId){
         Customer customer = repository.findByCustomerId(customerId);
+
         if(customer == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer Not Found.");
         return customer;
     }
 
-    @GetMapping("/customer/cards")
-    List<StarbucksCard> getCards(@RequestBody Customer customer){
+    @CrossOrigin(origins = "http://localhost:8900")
+    @GetMapping("/customer/cards/{customerId}")
+    List<StarbucksCard> getCards(@PathVariable String customerId){
+        Customer customer = repository.findByCustomerId(customerId);
+
+        if(customer == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer Not Found.");
         return cardRepository.findByCustomer(customer); 
     }
 }

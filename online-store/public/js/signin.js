@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
       })
       .then(() => {
         console.log('redirecting');
-        window.location.replace('/profile');
+        window.location.replace('/home');
       });
   });
 });

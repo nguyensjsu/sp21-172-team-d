@@ -14,11 +14,14 @@ import javax.persistence.Table;
 
 import javax.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "customer")
-@Data
+@Table(name = "CUSTOMER")
+@Getter
+@Setter
 @RequiredArgsConstructor
 public class Customer{
     private @Id String customerId;
@@ -30,7 +33,7 @@ public class Customer{
     // public void addCard(StarbucksCard card){
     //     cards.add(card);
     // }
-    @OneToMany
-    @JoinColumn(name="id")
-	private List<StarbucksCard> starbucksCards = new ArrayList<>();
+    @OneToMany(mappedBy = "customer", cascade={CascadeType.ALL})
+	private List<StarbucksCard> starbucksCards;
 }
+    

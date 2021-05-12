@@ -1,0 +1,100 @@
+html,
+body,
+main {
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-start {
+  justify-content: flex-start;
+}
+
+.item {
+  margin: 0;
+  padding-right: 1.5vw;
+  align-items: center;
+}
+
+.logo {
+  max-width: 50px;
+  height: auto;
+  padding: 1px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.back-button:hover {
+  opacity: 0.6;
+}
+
+img {
+  /* display: block;
+  margin: auto; */
+  padding: 1vw 0 1vw 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.item a {
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+li a {
+  color: black;
+}
+
+.transparent {
+  background-color: transparent;
+  box-shadow: none;
+  border-style: dashed;
+  border-radius: 10px;
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+.transparent:hover {
+  box-shadow: none;
+}
+
+/* FONT SIZE */
+.nav-text {
+  font-size: 1.4em;
+}
+
+.card-text {
+  font-size: 2em;
+}
+
+.header {
+  font-size: 3em;
+}
+
+/* PADDING AND MARGINS */
+.no-padding {
+  margin: 0;
+  padding: 0;
+}
+
+.pad {
+  padding: 1.5vw;
+}

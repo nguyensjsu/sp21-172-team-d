@@ -15,7 +15,7 @@ const app = express();
 //middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static('static'));
+app.use(express.static(__dirname + '/public'));
 
 //handblebar setup
 //app.set('view engine', 'ejs');
@@ -32,7 +32,7 @@ app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/signup.html'));
 });
 
-app.get('/profile', (req, res) => {
+app.get('/home', (req, res) => {
   const sessionCookie = req.cookies.session || '';
 
   admin
@@ -40,6 +40,29 @@ app.get('/profile', (req, res) => {
     .verifySessionCookie(sessionCookie, true)
     .then(() => {
       res.sendFile(path.join(__dirname + '/views/main.html'));
+    })
+    .catch((error) => res.redirect('./signin'));
+});
+
+app.get('/cards/:cardnum', (req, res) => {
+  const sessionCookie = req.cookies.session || '';
+
+  admin
+    .auth()
+    .verifySessionCookie(sessionCookie, true)
+    .then(() => {
+      res.sendFile(path.join(__dirname + '/views/manage-card.html'));
+    })
+    .catch((error) => res.redirect('./signin'));
+});
+
+app.get('/customerId', (req, res) => {
+  const sessionCookie = req.cookies.session || '';
+  admin
+    .auth()
+    .verifySessionCookie(sessionCookie, true)
+    .then((data) => {
+      res.json(data.uid);
     })
     .catch((error) => res.redirect('./signin'));
 });

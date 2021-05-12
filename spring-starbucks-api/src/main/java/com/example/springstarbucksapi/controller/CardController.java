@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,6 +63,7 @@ public class CardController {
         return msg;
     }
 
+    @CrossOrigin(origins = "http://localhost:8900")
     @GetMapping("/cards/{num}")
     StarbucksCard getOne(@PathVariable String num, HttpServletResponse res) {
         StarbucksCard card = repository.findByCardNumber(num);
