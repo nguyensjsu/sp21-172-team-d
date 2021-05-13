@@ -82,30 +82,9 @@ docker-shell:
 
 # Kong
 
-kong-get-default-config:
-	docker exec -it kong kong config init /home/kong/kong.yaml
-	docker exec -it kong cat /home/kong/kong.yaml > kong-current.yaml
-	cat kong-current.yaml
-
 kong-load-config:
 	http :8001/config config=@../resources/docker-kong.yaml
 	docker exec -it spring-starbucks-api_kong_1 kong reload
-
-kong-reload-config:
-	docker exec -it kong kong reload
-
-kong-ping:
-	http localhost/api/ping apikey:2H3fONTa8ugl1IcVS7CjLPnPIS2Hp9dJ
-
-
-
-# docker run --name mysql-gumball --network gumball-network -e MYSQL_ROOT_PASSWORD=cmpe172 -td -p 3306:3306 mysql:8.0
-# docker run --name $(app) --network $(network) -e "MYSQL_HOST=mysql-starbucks" -td -p 8080:8080 $(app)
-# -docker stop mysql-starbucks
-# -docker rm mysql-starbucks
-# -docker rmi mysql-starbucks
-
-
 
 # Compose
 
@@ -119,7 +98,7 @@ network-prune:
 	docker network prune
 
 compose-up:
-	docker-compose up --scale starbucks-api=2 -d
+	docker-compose up --scale starbucks-api=1 -d
 
 compose-down:
 	docker-compose down

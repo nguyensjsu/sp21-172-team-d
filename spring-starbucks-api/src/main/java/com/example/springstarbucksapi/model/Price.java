@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 
@@ -27,7 +28,9 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor  // required by Hibernate for Entity creation
 @RequiredArgsConstructor
 @Entity
-@Table()
+@Table(uniqueConstraints={
+  @UniqueConstraint(columnNames = {"drink", "size", "price"})
+})
 public class Price {
   	// public Price(){}  // Default constructor required by Hibernate for Entity creation
     

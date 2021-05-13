@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: starbucks-api
-        image: rustypedrosa/starbucks-api:v2
+        image: rustypedrosa/starbucks-api:v4
         ports:
         - containerPort: 8080
