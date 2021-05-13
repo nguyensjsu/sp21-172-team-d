@@ -52,24 +52,24 @@ class LoadDatabase {
             // priceRepository.save(new Price(latte, venti, new BigDecimal("3.95")));
             // priceRepository.findAll().forEach(price -> log.info("Preloaded " + price));
             
-            priceRepository.save(new Price("Caffe Latte", "tall", "2.95"));
-            priceRepository.save(new Price("Caffe Latte", "grande", "3.65"));
-            priceRepository.save(new Price("Caffe Latte", "venti", "3.95"));
+            priceRepository.save(new Price("Caffe Latte", "tall", "2.95", 20));
+            priceRepository.save(new Price("Caffe Latte", "grande", "3.65", 30));
+            priceRepository.save(new Price("Caffe Latte", "venti", "3.95", 30));
             
-            priceRepository.save(new Price("Caffe Americano", "tall", "2.25"));
-            priceRepository.save(new Price("Caffe Americano", "grande", "2.65"));
-            priceRepository.save(new Price("Caffe Americano", "venti", "2.95"));
+            priceRepository.save(new Price("Caffe Americano", "tall", "2.25", 20));
+            priceRepository.save(new Price("Caffe Americano", "grande", "2.65", 20));
+            priceRepository.save(new Price("Caffe Americano", "venti", "2.95", 20));
             
-            priceRepository.save(new Price("Caffe Mocha", "tall", "3.45"));
-            priceRepository.save(new Price("Caffe Mocha", "grande", "4.15"));
-            priceRepository.save(new Price("Caffe Mocha", "venti", "4.45"));
+            priceRepository.save(new Price("Caffe Mocha", "tall", "3.45", 30));
+            priceRepository.save(new Price("Caffe Mocha", "grande", "4.15", 40));
+            priceRepository.save(new Price("Caffe Mocha", "venti", "4.45", 40));
             
-            priceRepository.save(new Price("Cappuccino", "tall", "2.95"));
-            priceRepository.save(new Price("Cappuccino", "grande", "3.65"));
-            priceRepository.save(new Price("Cappuccino", "venti", "3.95"));
+            priceRepository.save(new Price("Cappuccino", "tall", "2.95", 20));
+            priceRepository.save(new Price("Cappuccino", "grande", "3.65", 30));
+            priceRepository.save(new Price("Cappuccino", "venti", "3.95", 30));
             
-            priceRepository.save(new Price("Espresso", "short", "1.75"));
-            priceRepository.save(new Price("Espresso", "tall", "1.95"));
+            priceRepository.save(new Price("Espresso", "short", "1.75", 10));
+            priceRepository.save(new Price("Espresso", "tall", "1.95", 10));
             priceRepository.findAll().forEach(item -> log.info("Preloaded " + item));
         };
     }

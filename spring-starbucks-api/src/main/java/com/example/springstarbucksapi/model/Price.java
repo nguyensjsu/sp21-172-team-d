@@ -39,6 +39,26 @@ public class Price {
       this.size = size;
       this.price = new BigDecimal(price);
     }
+    
+    public Price(String drink, String size, Double price) {
+      this.drink = drink;
+      this.size = size;
+      this.price = new BigDecimal(price);
+    }
+    
+    public Price(String drink, String size, String price, int rewardsPrice) {
+      this.drink = drink;
+      this.size = size;
+      this.price = new BigDecimal(price);
+      this.rewardsPrice = rewardsPrice;
+    }
+
+    public Price(String drink, String size, Double price, int rewardsPrice) {
+      this.drink = drink;
+      this.size = size;
+      this.price = new BigDecimal(price);
+      this.rewardsPrice = rewardsPrice;
+    }
 
     private @Id @GeneratedValue Long id;
 
@@ -47,5 +67,6 @@ public class Price {
 
     // https://stackoverflow.com/questions/3730019/why-not-use-double-or-float-to-represent-currency
     @NotNull @NonNull BigDecimal price;
-
+    
+    int rewardsPrice;
 }
