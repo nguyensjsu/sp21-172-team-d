@@ -1,8 +1,8 @@
 account = rustypedrosa
 app = starbucks-api
 network = kong-network
-version-app = 2.0
-version-docker = v2
+version-app = 4.0
+version-docker = v4
 
 all: clean
 
@@ -58,6 +58,11 @@ docker-run-kong:
     kong:2.4.0
 	docker ps
 
+#	docker run -d --network gumball --name mysql -td -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cmpe172 mysql:8.0
+docker-run-mysql:
+	docker run --name starbucks-mysql --network $(network) -td -e MYSQL_ROOT_PASSWORD=cmpe172 mysql:8.0
+	docker ps
+
 docker-run-all: docker-run docker-run-kong
 
 docker-clean:
@@ -83,8 +88,8 @@ kong-get-default-config:
 	cat kong-current.yaml
 
 kong-load-config:
-	http :8001/config config=@../resources/docker/kong.yaml
-	docker exec -it kong kong reload
+	http :8001/config config=@../resources/docker-kong.yaml
+	docker exec -it spring-starbucks-api_kong_1 kong reload
 
 kong-reload-config:
 	docker exec -it kong kong reload
@@ -107,17 +112,17 @@ kong-ping:
 # network-ls:
 # 	docker network ls
 
-# network-create:
-# 	docker network create --driver bridge gumball-network
+network-create:
+	docker network create --driver bridge starbucks-api-network
 
-# network-prune:
-# 	docker network prune
+network-prune:
+	docker network prune
 
-# compose-up:
-# 	docker-compose up --scale gumball=2 -d
+compose-up:
+	docker-compose up --scale starbucks-api=2 -d
 
-# compose-down:
-# 	docker-compose down
+compose-down:
+	docker-compose down
 
 # lb-stats:
 # 	echo "user = admin | password = admin"

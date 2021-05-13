@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.example'
-version = '2.0'
+version = '4.0'
 sourceCompatibility = '11'
 
 configurations {
@@ -24,7 +24,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
+	// runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
