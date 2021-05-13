@@ -1,5 +1,14 @@
 # CMPE 172 Project Journal - Rusty Pedrosa (Enrique)
 
+## Week 4
+![](images/week4-cards.png)
+- Finished testing my lab8 API merged with Justin's API
+- Converted from H2 to MySQL
+- Tested in local docker-compose
+- Added rewards points to price table with defaults loaded by LoadDatabase
+- Fixed an issue with duplicate prices being created in price table by multiple instances of api container
+![](week4-docker-compose.png)
+
 ## Week 3
 - Since I just finished lab 8, I want to see if I can keep it online and point a domain to my kong ingress IP for our project.
   - I already own a domain, pedrosatech.com, so let's see if I can get a subdomain going
