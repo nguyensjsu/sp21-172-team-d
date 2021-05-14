@@ -35,4 +35,4 @@ jobs:
       uses: actions/upload-artifact@v2.2.3
       with:
         name: starbucks-api
-        path: build/libs/starbucks-api-4.0.jar
+        path: spring-starbucks-api/build/libs/starbucks-api-4.0.jar
