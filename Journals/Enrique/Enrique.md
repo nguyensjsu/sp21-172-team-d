@@ -1,5 +1,22 @@
 # CMPE 172 Project Journal - Rusty Pedrosa (Enrique)
 
+## Final Week
+- Since I need to redeploy to cloud anyway, I am going to see if I can utilize what we learned in the CI/CD lecture.
+- First attempt failed CI:
+```
+> Task :test
+
+SpringStarbucksApiApplicationTests > contextLoads() FAILED
+
+    java.lang.IllegalStateException at DefaultCacheAwareContextLoaderDelegate.java:132
+        Caused by: org.springframework.beans.factory.BeanCreationException at AbstractAutowireCapableBeanFactory.java:1786
+            Caused by: org.hibernate.service.spi.ServiceException at AbstractServiceRegistryImpl.java:275
+                Caused by: org.hibernate.HibernateException at DialectFactoryImpl.java:100
+1 test completed, 1 failed
+```
+- This because even the default, empty test apparently attempts to connect to the database specified in application.properties, which doesn't exist here.
+  - Fix is to change the command to  `gradle build -x test`
+
 ## Week 4
 ![](images/week4-cards.png)
 - Finished testing my lab8 API merged with Justin's API
