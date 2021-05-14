@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   mysql-starbucks:
@@ -16,9 +16,9 @@ services:
       MYSQL_ROOT_PASSWORD: cmpe172
     restart: always
   starbucks-api:
-    image: rustypedrosa/starbucks-api:v4
+    image: dannygiap/starbucks-api:v4
     depends_on:
-    - mysql-starbucks
+      - mysql-starbucks
     volumes:
       - /tmp:/tmp
     networks:
@@ -26,27 +26,27 @@ services:
     ports:
       - 8080
     environment:
-      MYSQL_HOST: "mysql-starbucks"
+      MYSQL_HOST: 'mysql-starbucks'
     restart: always
   kong:
     image: kong:2.4.0
     depends_on:
-    - starbucks-api
+      - starbucks-api
     ports:
-    - "80:8000"
-    - "443:8443"
-    - "8036:3306"
-    - "3306:3306"
-    - "8001:8001"
-    - "8444:8444"
+      - '80:8000'
+      - '443:8443'
+      - '8036:3306'
+      - '3306:3306'
+      - '8001:8001'
+      - '8444:8444'
     environment:
-      KONG_DATABASE: "off"
-      KONG_PROXY_ACCESS_LOG: "/dev/stdout"
-      KONG_ADMIN_ACCESS_LOG: "/dev/stdout"
-      KONG_PROXY_ERROR_LOG: "/dev/stderr"
-      KONG_ADMIN_ERROR_LOG: "/dev/stderr"
-      KONG_ADMIN_LISTEN: "0.0.0.0:8001, 0.0.0.0:8444 ssl"
-      LOG_LEVEL: "info"
+      KONG_DATABASE: 'off'
+      KONG_PROXY_ACCESS_LOG: '/dev/stdout'
+      KONG_ADMIN_ACCESS_LOG: '/dev/stdout'
+      KONG_PROXY_ERROR_LOG: '/dev/stderr'
+      KONG_ADMIN_ERROR_LOG: '/dev/stderr'
+      KONG_ADMIN_LISTEN: '0.0.0.0:8001, 0.0.0.0:8444 ssl'
+      LOG_LEVEL: 'info'
     networks:
       - starbucks-api-network
 

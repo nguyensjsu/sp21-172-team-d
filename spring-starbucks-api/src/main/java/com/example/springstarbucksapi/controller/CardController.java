@@ -2,6 +2,7 @@ package com.example.springstarbucksapi.controller;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
@@ -80,10 +81,11 @@ public class CardController {
             "Status": ""
         }		
     */
+    @CrossOrigin(origins = "http://localhost:8900")
     @GetMapping("/cards/{num}")
     StarbucksCard one(@PathVariable String num) {
 
-        StarbucksCard card = repository.findByCardNumber(num)
+        StarbucksCard card = ((Optional<StarbucksCard>) repository.findByCardNumber(num))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Card not found!"));
 
         return card;
@@ -116,7 +118,7 @@ public class CardController {
     @PostMapping("/card/activate/{num}/{code}")
     StarbucksCard activate(@PathVariable String num, @PathVariable String code) {
 
-        StarbucksCard card = repository.findByCardNumber(num)
+        StarbucksCard card = ((Optional<StarbucksCard>) repository.findByCardNumber(num))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Card not found!"));
 
         if (card.getCardCode().equals(code)) {

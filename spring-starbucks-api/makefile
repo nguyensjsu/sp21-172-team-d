@@ -1,4 +1,4 @@
-account = rustypedrosa
+account = dannygiap
 app = starbucks-api
 network = kong-network
 version-app = 4.0
@@ -39,7 +39,7 @@ docker-run-standalone: docker-build
 	docker ps
 
 docker-run: docker-build
-	docker run --name $(app) --network $(network) -td $(app)
+	docker run --name $(app) --network $(network) -e "MYSQL_HOST=starbucks-mysql" -td $(app)
 	docker ps
 
 docker-run-kong:
