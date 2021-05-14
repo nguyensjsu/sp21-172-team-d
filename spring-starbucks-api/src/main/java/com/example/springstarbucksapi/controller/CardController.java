@@ -52,7 +52,7 @@ public class CardController {
 
     @GetMapping("/cards") 
     List<StarbucksCard> allCards() {
-        return repository.findAll();
+        return (List<StarbucksCard>) repository.findAll();
     }
 
     @DeleteMapping("/cards")

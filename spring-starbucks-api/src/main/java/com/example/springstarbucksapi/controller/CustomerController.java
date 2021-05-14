@@ -93,7 +93,7 @@ public class CustomerController {
 
     @GetMapping("/customer")
     List<Customer> getCustomers(){
-        return repository.findAll();
+        return (List<Customer>) repository.findAll();
     }
 
     @CrossOrigin(origins = "http://localhost:8900")

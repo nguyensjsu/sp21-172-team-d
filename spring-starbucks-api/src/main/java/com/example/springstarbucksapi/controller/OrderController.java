@@ -188,7 +188,7 @@ public class OrderController {
 
     @GetMapping("/orders")
     List<Order> allOrders() {
-        return repository.findAll();
+        return (List<Order>) repository.findAll();
     }
 
     @DeleteMapping("/orders")
