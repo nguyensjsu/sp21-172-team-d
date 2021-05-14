@@ -25,6 +25,6 @@ spec:
         name: cloud-sql-proxy
         command:
           - "/cloud_sql_proxy"
-          - "-instances=<cmpe172-312511:us-central1-c:mysql-starbucks=tcp:3306"
+          - "-instances=cmpe172-312511:us-central1-c:mysql-starbucks=tcp:3306"
         securityContext:
           runAsNonRoot: true
