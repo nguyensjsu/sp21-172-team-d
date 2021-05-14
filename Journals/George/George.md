@@ -87,6 +87,10 @@
 * Our group met this week to make sure all our parts will be ready for us to submit and look if we are missing anything.
 
 * Updated Cashier's app UI:
+	
+	![project image](Images/Screen%20Shot%202021-05-13%20at%208.04.01%20PM.png)
+
+	![project image](Images/Screen%20Shot%202021-05-13%20at%208.04.11%20PM.png)
 
 
 * Cards:
