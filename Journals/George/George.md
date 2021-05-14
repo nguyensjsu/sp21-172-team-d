@@ -86,10 +86,16 @@
 
 * Our group met this week to make sure all our parts will be ready for us to submit and look if we are missing anything.
 
-* Card I worked on:
+* Cards:
+	
+	
 
+* Commits: 
+	* https://github.com/nguyensjsu/sp21-172-team-d/commit/44ff311220a2b494333de1366634a93af12c04ff
 
-* Commits:
+	* https://github.com/nguyensjsu/sp21-172-team-d/commit/fbf7eb8cc4a2a4a0762435211228156dbad6c4d5
+
+	* https://github.com/nguyensjsu/sp21-172-team-d/commit/6a523ea085ec7fed002e5fcf7e9c38c627c1ca8f
 
 
 * Challenges:
