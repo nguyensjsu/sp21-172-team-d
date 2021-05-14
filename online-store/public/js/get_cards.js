@@ -24,7 +24,7 @@ function get_cards() {
     .then((res) => res.json())
     .then((uid) => {
       //call Starbucks API
-      fetch(`http://localhost:8080/customer/cards/${uid}`)
+      fetch(`http://localhost/customer/cards:8080/${uid}`)
         .then((res) => res.json())
         .then((data) => {
           let cardList = document.getElementById('card-list');
