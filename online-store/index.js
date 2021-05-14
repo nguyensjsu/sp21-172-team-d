@@ -17,9 +17,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 
-//handblebar setup
-//app.set('view engine', 'ejs');
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/signup.html'));
 });

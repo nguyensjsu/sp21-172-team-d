@@ -45,3 +45,19 @@ https://github.com/nguyensjsu/sp21-172-team-d/commit/3f89bd026402f9c467df59a18f4
 
 The main challenge was getting the online store to successfully make API calls to the Starbucks API. During testing, I had issues with CORS, and i had to make some tweaks to the API code to accept requests from the online store. I also had to refresh my memory on how request bodies were being mapped to a java object.
 Another challenge was realizing that the view templating engine i was using (EJS) could not load in javascript files that existed in a different directory. Because of this, I am no longer using EJS to render views, and instead will serve pure HTML to the user.
+
+## Week 4
+
+![week4](images/week4.png)
+
+### Accomplishments
+
+This week I worked on the online-store and modified the starbucks api to work with api calls that come from the online store. The main accomplishment was making requests and passing in necessary data to retrieve a customer's cards and display them to the user. I also added some more routes for the online store express server.
+
+code commits:
+https://github.com/nguyensjsu/sp21-172-team-d/commit/26ca56f48c145d2c4df57fbb5eb20fea216182bc
+https://github.com/nguyensjsu/sp21-172-team-d/commit/520a46ee0aecc6ae01af8d1835c22fb1c4b9ac4c
+
+### Challenges and Resolutions
+
+The challenge this week was to successfully request data from the starbucks API. After new customer endpoints were created for the starbucks API by my groupmate, I then had to make sure that the online store is able to make requests to these endpoints and get the necessary data as a response. It took some testing and code adjustments to make debug the errors I was getting from these requests. I also had to brush up my skills on DOM manipulation in order to render the data that was received from the API.

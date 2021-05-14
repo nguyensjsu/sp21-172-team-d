@@ -32,3 +32,12 @@ https://github.com/nguyensjsu/sp21-172-team-d/commit/a6622df247327fb46c5c1b848f9
 
 ## Cards Worked on
 ![card](images/cardw3.png)
+
+
+-----
+
+## Week 4
+
+### Not much to report this week, I was super busy with finishing up school projects. 
+### I led our team meeting to make sure everyone was on track and we had a meeting this past Wednesday(5/12) discussing changes for our plan to implement this project. 
+### I also spend a day reading through Rusty's pull request because there was so many changes. 

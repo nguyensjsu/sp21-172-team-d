@@ -1,5 +1,36 @@
 # CMPE 172 Project Journal - Rusty Pedrosa (Enrique)
 
+## Final Week
+- Since I need to redeploy to cloud anyway, I am going to see if I can utilize what we learned in the CI/CD lecture.
+- First attempt failed CI:
+```
+> Task :test
+
+SpringStarbucksApiApplicationTests > contextLoads() FAILED
+
+    java.lang.IllegalStateException at DefaultCacheAwareContextLoaderDelegate.java:132
+        Caused by: org.springframework.beans.factory.BeanCreationException at AbstractAutowireCapableBeanFactory.java:1786
+            Caused by: org.hibernate.service.spi.ServiceException at AbstractServiceRegistryImpl.java:275
+                Caused by: org.hibernate.HibernateException at DialectFactoryImpl.java:100
+1 test completed, 1 failed
+```
+- This because even the default, empty test apparently attempts to connect to the database specified in application.properties, which doesn't exist here.
+  - Fix is to change the command to  `gradle build -x test`
+
+- I love that the PR to create the CI ran the CI so I could fix an issue with the CI
+
+![](images/week5-ci.png)
+
+
+## Week 4
+![](images/week4-cards.png)
+- Finished testing my lab8 API merged with Justin's API
+- Converted from H2 to MySQL
+- Tested in local docker-compose
+- Added rewards points to price table with defaults loaded by LoadDatabase
+- Fixed an issue with duplicate prices being created in price table by multiple instances of api container
+![](week4-docker-compose.png)
+
 ## Week 3
 - Since I just finished lab 8, I want to see if I can keep it online and point a domain to my kong ingress IP for our project.
   - I already own a domain, pedrosatech.com, so let's see if I can get a subdomain going

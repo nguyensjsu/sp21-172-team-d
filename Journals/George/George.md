@@ -80,3 +80,32 @@
 		* Solution: I spent like an hour looking at the code and I noticed that I had an error in file name. The file name had a typo making it different than the class name inside the file. Fixing the name fixed the error.
 
 
+## Week #4 Status Report
+
+* This week I continued working on the Cashier's app. I changed the UI in the home screen and use the starbucks image as a hyperlink instead of using text to move to the next view. I also modified the customize drink page to look more neat. This week, I fixed the UI to fit in a square/rectangular screen like the ones cashiers use. I'm also currently working on handling insufficient funds on the cards used by client.
+
+* Our group met this week to make sure all our parts are on track and will be ready for us to submit and also look if we are missing anything.
+
+* Updated Cashier's app UI:
+	
+	![project image](Images/Screen%20Shot%202021-05-13%20at%208.04.01%20PM.png)
+
+	![project image](Images/Screen%20Shot%202021-05-13%20at%208.04.11%20PM.png)
+
+
+* Cards:
+	
+	![project image](Images/Screen%20Shot%202021-05-13%20at%207.55.48%20PM.png)
+
+* Commits: 
+	* https://github.com/nguyensjsu/sp21-172-team-d/commit/44ff311220a2b494333de1366634a93af12c04ff
+
+	* https://github.com/nguyensjsu/sp21-172-team-d/commit/fbf7eb8cc4a2a4a0762435211228156dbad6c4d5
+
+	* https://github.com/nguyensjsu/sp21-172-team-d/commit/6a523ea085ec7fed002e5fcf7e9c38c627c1ca8f
+
+
+* Challenges:
+
+	* Since I was working mainly on the UI this week, I did not have any challenges.
+

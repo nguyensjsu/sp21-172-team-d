@@ -1,13 +1,12 @@
 package com.example.springstarbucksapi.controller;
 
 import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.springstarbucksapi.model.*;
-import com.example.springstarbucksapi.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,6 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Random;
+
+import com.example.springstarbucksapi.model.*;
+import com.example.springstarbucksapi.repository.*;
 
 @RestController
 public class CustomerController {
@@ -42,13 +46,14 @@ public class CustomerController {
 
         StarbucksCard newCard = new StarbucksCard();
 
+        // TODO: Issue #18 Consolidate new card logic
         Random random = new Random();
         int num = random.nextInt(900000000) + 100000000;
         int code = random.nextInt(900) + 100;
         newCard.setCardNumber(String.valueOf(num));
         newCard.setCardCode(String.valueOf(code));
-        newCard.setBalance(0.0);
-        newCard.setActive(true);
+        newCard.setBalance(new BigDecimal("20.00"));
+        newCard.setActivated(true);
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);
 
@@ -70,14 +75,15 @@ public class CustomerController {
 
         if(customer == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer Not Found.");
 
+        // TODO: #18
         StarbucksCard newCard = new StarbucksCard();
         Random random = new Random();
         int num = random.nextInt(900000000) + 100000000;
         int code = random.nextInt(900) + 100;
         newCard.setCardNumber(String.valueOf(num));
         newCard.setCardCode(String.valueOf(code));
-        newCard.setBalance(0.0);
-        newCard.setActive(true);
+        newCard.setBalance(new BigDecimal("20.00"));
+        newCard.setActivated(true);
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);
 
