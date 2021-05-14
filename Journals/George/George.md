@@ -82,9 +82,9 @@
 
 ## Week #4 Status Report
 
-* This week I continued working on the Cashier's app. I changed the UI in the home scrreen to use the starbucks image as a hyperlink instead of using text to move to the next view. I also modified the ingrediesnts selection page to look more neat. This week, I fixed the UI to fit in a square/rectangular screen like the ones cashiers use. I'm also currently working on handling insufficient funds on the cards used by client.
+* This week I continued working on the Cashier's app. I changed the UI in the home screen and use the starbucks image as a hyperlink instead of using text to move to the next view. I also modified the customize drink page to look more neat. This week, I fixed the UI to fit in a square/rectangular screen like the ones cashiers use. I'm also currently working on handling insufficient funds on the cards used by client.
 
-* Our group met this week to make sure all our parts will be ready for us to submit and look if we are missing anything.
+* Our group met this week to make sure all our parts are on track and will be ready for us to submit and also look if we are missing anything.
 
 * Updated Cashier's app UI:
 	
@@ -107,5 +107,5 @@
 
 * Challenges:
 
-
+	* Since I was working mainly on the UI this week, I did not have any challenges.
 
