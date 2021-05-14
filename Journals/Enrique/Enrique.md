@@ -17,6 +17,11 @@ SpringStarbucksApiApplicationTests > contextLoads() FAILED
 - This because even the default, empty test apparently attempts to connect to the database specified in application.properties, which doesn't exist here.
   - Fix is to change the command to  `gradle build -x test`
 
+- I love that the PR to create the CI ran the CI so I could fix an issue with the CI
+
+![](images/week5-ci.png)
+
+
 ## Week 4
 ![](images/week4-cards.png)
 - Finished testing my lab8 API merged with Justin's API
