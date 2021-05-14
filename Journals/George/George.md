@@ -88,7 +88,7 @@
 
 * Cards:
 	
-	
+	![project image](Images/Screen%20Shot%202021-05-13%20at%207.55.48%20PM.png)
 
 * Commits: 
 	* https://github.com/nguyensjsu/sp21-172-team-d/commit/44ff311220a2b494333de1366634a93af12c04ff
