@@ -15,8 +15,16 @@ spec:
       labels:
         name: starbucks-api
     spec:
+      serviceAccountName: sa-cloud-sql
       containers:
       - name: starbucks-api
         image: gcr.io/PROJECT_ID/IMAGE:TAG
         ports:
         - containerPort: 8080
+      - image: gcr.io/cloudsql-docker/gce-proxy:1.18.0
+        name: cloud-sql-proxy
+        command:
+          - "/cloud_sql_proxy"
+          - "-instances=<cmpe172-312511:us-central1-c:mysql-starbucks=tcp:3306"
+        securityContext:
+          runAsNonRoot: true
