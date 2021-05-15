@@ -1,12 +1,12 @@
 window.addEventListener('DOMContentLoaded', () => {
   var firebaseConfig = {
-    apiKey: 'AIzaSyA9TbKO5ICQ9Axzj4hlycGtVwTAZTJNz6E',
-    authDomain: 'starbucks-online-store.firebaseapp.com',
-    projectId: 'starbucks-online-store',
-    storageBucket: 'starbucks-online-store.appspot.com',
-    messagingSenderId: '192573308957',
-    appId: '1:192573308957:web:6f01ac7a0ea1a920c0c6f4',
-    measurementId: 'G-0J40M88H1G',
+    apiKey:FIREBASE_apiKey ,
+    authDomain:FIREBASE_authDomain ,
+    projectId:FIREBASE_projectId ,
+    storageBucket:FIREBASE_storageBucket ,
+    messagingSenderId:FIREBASE_messagingSenderId ,
+    appId:FIREBASE_appId ,
+    measurementId:FIREBASE_measurementId,
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
