@@ -1,5 +1,5 @@
 compile:
-	gradle build 
+	gradle build -x test
 
 jar: compile
 	gradle bootJar
@@ -13,4 +13,4 @@ docker-run: docker-build
 	docker ps
 
 sql:
-	docker run -d --network starbucks --security-opt seccomp=unconfined --name mysql -td -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cmpe172 mysql:8.0
+	docker run -d --network starbucks --name mysql -td -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cmpe172 mysql:8.0

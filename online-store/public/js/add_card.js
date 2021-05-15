@@ -37,7 +37,7 @@ add_card = () => {
           info.appendChild(manage);
 
           let img = document.createElement('img');
-          img.src = `https://source.unsplash.com/featured/1600x900/?water,sky,gradient`;
+          img.src = `/images/card1.png`;
 
           container.appendChild(info);
           container.appendChild(img);

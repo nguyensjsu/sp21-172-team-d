@@ -1,4 +1,4 @@
-export default function populate_card(data, card, home, i) {
+export default function populate_card(data, card, home) {
   let container = document.createElement('div');
   container.id = data.cardNumber;
 
@@ -28,7 +28,7 @@ export default function populate_card(data, card, home, i) {
   }
 
   let img = document.createElement('img');
-  img.src = `https://source.unsplash.com/featured/160${i}x900/?water,sky,gradient`;
+  img.src = `/images/card1.png`;
 
   container.appendChild(info);
   container.appendChild(img);

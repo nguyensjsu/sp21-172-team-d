@@ -31,7 +31,7 @@ function get_cards() {
           console.log(data);
 
           data.forEach((element) => {
-            populate_card(element, cardList, true, element.id);
+            populate_card(element, cardList, true);
           });
         });
     });
