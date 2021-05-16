@@ -85,4 +85,20 @@ public class CardController {
         }
         return card;
     }
+
+    @CrossOrigin(origins = "http://localhost:8900")
+    @PostMapping("/card/load/{num}/{amount}")
+    StarbucksCard loadCard(@PathVariable String num, @PathVariable String amount, HttpServletResponse res) {
+        StarbucksCard card = repository.findByCardNumber(num);
+
+        if(card == null) 
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Card Not Found.");
+
+        double currentBalance = card.getBalance();
+        double newBalance = currentBalance + Double.parseDouble(amount);
+        card.setBalance(newBalance);
+
+        repository.save(card);
+        return card;
+    }
 }
