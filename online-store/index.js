@@ -4,6 +4,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
+const stripe = require('stripe')(
+  'sk_test_51IredNELdiv23YD49fQbtIjQn756WgbaAQ29nO5YjL3EsnaVQNUhKsdCMcXgvI7IKrIiEjRZGV3dOz4cXoa6qLUm00DNVYfppE'
+);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -17,8 +20,35 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 
-//handblebar setup
-//app.set('view engine', 'ejs');
+//stripe test
+app.use(express.static('.'));
+
+app.post('/create-checkout-session', async (req, res) => {
+  let amount = req.body.price;
+  let cardNum = req.body.card;
+  console.log(req.body);
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Refill card',
+          },
+          unit_amount: Number(amount) * 100,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `http://localhost:8900/cards/${cardNum}`,
+    cancel_url: `http://localhost:8900/cards/${cardNum}`,
+    client_reference_id: cardNum, //this will pass the cardnum to the data object that stripe creates
+  });
+
+  res.json({ id: session.id });
+});
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/signup.html'));

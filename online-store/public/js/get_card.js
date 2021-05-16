@@ -10,7 +10,6 @@ function get_card() {
     .then((res) => res.json())
     .then((data) => {
       let card = document.getElementById('card');
-      console.log(data);
       populate_card(data, card, false);
     });
 }
