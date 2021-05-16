@@ -1,5 +1,6 @@
 package com.example.springstarbucksapi.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -47,7 +48,7 @@ public class CustomerController {
         int code = random.nextInt(900) + 100;
         newCard.setCardNumber(String.valueOf(num));
         newCard.setCardCode(String.valueOf(code));
-        newCard.setBalance(0.0);
+        newCard.setBalance(new BigDecimal(0.0));
         newCard.setActive(true);
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);
@@ -76,7 +77,7 @@ public class CustomerController {
         int code = random.nextInt(900) + 100;
         newCard.setCardNumber(String.valueOf(num));
         newCard.setCardCode(String.valueOf(code));
-        newCard.setBalance(0.0);
+        newCard.setBalance(new BigDecimal(0.0));
         newCard.setActive(true);
         newCard.setStatus("New Card");
         newCard.setCustomer(customer);

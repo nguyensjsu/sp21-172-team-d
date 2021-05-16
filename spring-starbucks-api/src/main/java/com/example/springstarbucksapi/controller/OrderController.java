@@ -1,5 +1,6 @@
 package com.example.springstarbucksapi.controller;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -60,7 +61,7 @@ public class OrderController {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Active Order Exists");
 
         }
-        double price = 0.0;
+        double price = 0.00;
         switch (order.getDrink()) {
         case "Caffe Latte":
             switch (order.getSize()) {
@@ -137,11 +138,10 @@ public class OrderController {
         default:
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Drink");
     }
-        double tax = 0.09;
-        double total = price + (price * tax);
-        double scale = Math.pow(10, 2);
-        double rounded = Math.round(total * scale) / scale;
-        order.setTotal(rounded);
+        BigDecimal tax = new BigDecimal("0.0775");
+        BigDecimal bigDecimalPrice = new BigDecimal(price); 
+        BigDecimal total = bigDecimalPrice.add(bigDecimalPrice.multiply(tax));
+        order.setTotal(total);
         order.setStatus("Ready for Payment");
         Order new_order = repository.save(order);
         orders.put(regid, new_order);
@@ -176,9 +176,9 @@ public class OrderController {
         if(order == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Order Not Found");
         }
-        double balance = card.getBalance();
-        double price = order.getTotal();
-        double newBalance = balance - price;
+        BigDecimal balance = card.getBalance();
+        BigDecimal price = order.getTotal();
+        BigDecimal newBalance = balance.subtract(price);
         card.setBalance(newBalance);
         cardRepository.save(card);
         order.setStatus("Paid with Card: " + card.getCardNumber() + " Balance: $" + card.getBalance());

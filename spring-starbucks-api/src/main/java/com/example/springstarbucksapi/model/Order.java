@@ -1,5 +1,6 @@
 package com.example.springstarbucksapi.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,6 @@ public class Order {
     private String drink;
     private String milk;
     private String size;
-    private double total;
+    private BigDecimal total;
     private String status;
 }

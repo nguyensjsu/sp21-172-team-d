@@ -1,5 +1,6 @@
 package com.example.springstarbucksapi.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -61,7 +62,7 @@ public class CardController {
 
         newCard.setCardNumber(String.valueOf(num));
         newCard.setCardCode(String.valueOf(code));
-        newCard.setBalance(20.00);
+        newCard.setBalance(new BigDecimal(20.00));
         newCard.setActive(false);
         newCard.setStatus("New Card");
         return repository.save(newCard);
@@ -129,14 +130,14 @@ public class CardController {
             Map<String, Object> objectMapper = m.convertValue(dataMap, Map.class);
 
             String cardNum = (String) objectMapper.get("clientReferenceId");
-            long amount = (long) objectMapper.get("amountTotal") / 100;
+            BigDecimal amount = new BigDecimal((long) objectMapper.get("amountTotal")).divide(new BigDecimal(100));
 
             StarbucksCard card = repository.findByCardNumber(cardNum);
 
             if(card == null) response.setStatus(HttpServletResponse.SC_NOT_FOUND);
            
-            double currentBalance = card.getBalance();
-            double newBalance = currentBalance + (double) amount;
+            BigDecimal currentBalance = card.getBalance();
+            BigDecimal newBalance = currentBalance.add(amount);
             card.setBalance(newBalance);
             repository.save(card);
             System.out.println("loading money into card");
