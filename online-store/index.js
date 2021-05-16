@@ -8,7 +8,7 @@ const stripe = require('stripe')(
   'sk_test_51Iio2XDyQynlG6QghXMQyA02YlBE3HKUF5gQPHkDYQApUw6QP4lx6pRVCBU6u7CpOQjfQWARw3XxkY13fHtIaEWj00lMadSgqP'
 );
 const bodyParser = require('body-parser');
-
+const endpointSecret = 'whsec_v19TvcbR39Z2ZBcU6cXjU9sMtFffQ3h8';
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
