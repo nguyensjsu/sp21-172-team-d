@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Starbucks Online Store</title>
+    <script src="https://js.stripe.com/v3/"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -40,16 +41,66 @@
             </div>
           </a>
         </div>
-
         <div class="col s12 m8 l9">
           <div class="container pad flex-center" id="card"></div>
           <div class="container flex-center">
-            <button
-              onclick="console.log('add money button clicked')"
+            <div class="input-field col s12">
+              <select id="amount"  onChange="validateButton()">
+                <option disabled selected>Select amount</option>
+                <option value="10">$10</option>
+                <option value="20">$20</option>
+                <option value="50">$50</option>
+                <option value="100">$100</option>
+              </select>
+            </div>
+            <button disabled
+              id="checkout"
+              onclick="console.log('add money button clicked');"
               class="btn-large waves-effect waves-light green darken-3"
             >
               Add Money
             </a>
+            <script>
+              var stripe = Stripe('pk_test_51Iio2XDyQynlG6Qgx4F3sA2Nsba8TfnbNowwvXf5dzlCWiwwoiHoW1CinG8ds7WZTTLMLt899mD3442mjr3Y60Pj001kRSGUZ2');
+              var checkoutButton = document.getElementById('checkout');
+              var amount = document.getElementById('amount');
+              function validateButton(){
+                amount = $('select').val()
+                if(amount){
+                  checkoutButton.disabled = false;
+                }
+              }
+              checkoutButton.addEventListener('click', function() {
+                // Create a new Checkout Session using the server-side endpoint you
+                // created in step 3.
+                amount = $('select').val()
+                var object = {price: amount}
+                fetch('/create-checkout-session', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(object)
+                })
+                .then(function(response) {
+                  return response.json();
+                })
+                .then(function(session) {
+                  return stripe.redirectToCheckout({ sessionId: session.id });
+                })
+                .then(function(result) {
+                  // If `redirectToCheckout` fails due to a browser or network
+                  // error, you should display the localized error message to your
+                  // customer using `error.message`.
+                  if (result.error) {
+                    alert(result.error.message);
+                  }
+                })
+                .catch(function(error) {
+                  console.error('Error:', error);
+                });
+              });
+            </script>
           </div>
         </div>
       </div>
@@ -61,5 +112,11 @@
     <!-- ALWAYS INCLUDE THESE -->
 
     <script type="module" src="/js/get_card.js"></script>
+
+    <script>
+      $(document).ready(function() {
+         $('select').formSelect();
+     });
+   </script>
   </body>
 </html>
