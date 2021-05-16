@@ -1,23 +1,40 @@
 package com.example.springstarbucksapi.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import com.example.springstarbucksapi.model.*;
 import com.example.springstarbucksapi.repository.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.stripe.exception.SignatureVerificationException;
+import com.stripe.model.Event;
+import com.stripe.model.EventData;
+import com.stripe.model.StripeObject;
+import com.stripe.model.checkout.Session;
+import com.stripe.net.Webhook;
+
+
 @RestController
 public class CardController {
     private final CardRepository repository;
+    String endpointSecret = "whsec_UL8UQGRyWWABISRZEwyTkIgs8zdXB7do";
 
     class Message {
         private String status;
@@ -86,19 +103,45 @@ public class CardController {
         return card;
     }
 
-    @CrossOrigin(origins = "http://localhost:8900")
-    @PostMapping("/card/load/{num}/{amount}")
-    StarbucksCard loadCard(@PathVariable String num, @PathVariable String amount, HttpServletResponse res) {
-        StarbucksCard card = repository.findByCardNumber(num);
+    @PostMapping("/webhook")
+    String loadCard(@RequestBody String stripeJsonEvent, @RequestHeader("Stripe-Signature") String sigHeader, HttpServletResponse response) {
+        Event event = Event.GSON.fromJson(stripeJsonEvent, Event.class);
 
-        if(card == null) 
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Card Not Found.");
+        //check for valid Stripe request
+        try {
+            event = Webhook.constructEvent(stripeJsonEvent, sigHeader, endpointSecret);
+          } catch (JsonSyntaxException e) {
+            // Invalid payload
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return "";
+          } catch (SignatureVerificationException e) {
+            // Invalid signature
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return "";
+          }
 
-        double currentBalance = card.getBalance();
-        double newBalance = currentBalance + Double.parseDouble(amount);
-        card.setBalance(newBalance);
+        if ("checkout.session.completed".equals(event.getType())) {
+            ObjectMapper m = new ObjectMapper();
 
-        repository.save(card);
-        return card;
+            //map JSON object to a Map object
+            Map<String, Object> props = m.convertValue(event.getData(), Map.class);
+            Object dataMap = props.get("object");
+            Map<String, Object> objectMapper = m.convertValue(dataMap, Map.class);
+
+            String cardNum = (String) objectMapper.get("clientReferenceId");
+            long amount = (long) objectMapper.get("amountTotal") / 100;
+
+            StarbucksCard card = repository.findByCardNumber(cardNum);
+
+            if(card == null) response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+           
+            double currentBalance = card.getBalance();
+            double newBalance = currentBalance + (double) amount;
+            card.setBalance(newBalance);
+            repository.save(card);
+            System.out.println("loading money into card");
+        }
+
+        return "";
     }
 }
