@@ -1,31 +1,33 @@
 div.ingredient-group:nth-child(odd) {
-	float: left;
-	padding-right: 20px;
+  float: left;
+  padding-right: 20px;
 }
 
 div.ingredient-group:nth-child(even) {
-    float: left;
-	padding-right: 0;
+  float: left;
+  padding-right: 0;
 }
 
 div.ingredient-group {
-	width: 50%;
+  width: 50%;
 }
 
 .grid:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
 
-*, *:after, *:before {
+*,
+*:after,
+*:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 span.validationError {
-	color: red;
+  color: red;
 }
 
 .center {
@@ -37,14 +39,15 @@ span.validationError {
 }
 
 h1 {
-position: relative;
-display: block;
+  position: relative;
+  display: block;
   margin-left: auto;
   margin-right: auto;
   top: 10px;
   left: 100px;
   width: 50%;
-  
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -61,3 +64,4 @@ a {
   top: 10px;
   left: 100px;
   width: 50%;
+}
