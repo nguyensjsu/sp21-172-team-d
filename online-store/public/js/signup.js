@@ -9,10 +9,14 @@ window.addEventListener('DOMContentLoaded', () => {
     measurementId: 'G-0J40M88H1G',
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  } else {
+    firebase.app(); // if already initialized, use that one
+  }
   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
 
-  document.getElementById('signin').addEventListener('submit', (event) => {
+  document.getElementById('login').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;

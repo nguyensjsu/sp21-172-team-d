@@ -4,7 +4,7 @@
     <title>Starbucks Online Store</title>
     <link
       rel="stylesheet"
-      href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <script
       src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"
@@ -17,36 +17,49 @@
   </head>
   <body>
     <main>
-      <h1>Sign Up</h1>
-      <form id="signin">
-        <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-          <legend class="ph0 mh0 fw6 clip">Sign Up</legend>
-          <div class="mt3">
-            <label class="db fw4 lh-copy f6" for="email">Email address</label>
-            <input
-              class="pa2 input-reset ba bg-transparent w-100 measure"
-              type="email"
-              name="email"
-              id="email"
+      <div class="row">
+        <h2 class="col s8 offset-s4">Sign Up</h2>
+        <form id="login" class="col s8 offset-s4">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="email" type="email" class="validate" />
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="password" type="password" class="validate" />
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <button>Sign up</button>
+        </form>
+        <span class="col s8 offset-s4"
+          >Already have an account?
+          <a href="http://localhost:8900/signin">Sign In</a></span
+        >
+      </div>
+      <div class="col s12 m6 offset-m3 center-align">
+        <button
+          id="google-signin"
+          class="oauth-container btn darken-4 white black-text"
+          style="text-transform: none"
+        >
+          <div class="left">
+            <img
+              width="20px"
+              style="margin-top: 7px; margin-right: 8px"
+              alt="Google sign-in"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
             />
           </div>
-          <div class="mt3">
-            <label class="db fw4 lh-copy f6" for="password">Password</label>
-            <input
-              class="b pa2 input-reset ba bg-transparent"
-              type="password"
-              name="password"
-              id="password"
-            />
-          </div>
-        </fieldset>
-        <button>Sign up</button>
-      </form>
-      <span
-        >Already have an account?
-        <a href="http://localhost:8900/signin">Sign In</a></span
-      >
+          Sign up with Google
+        </button>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="/js/signup.js"></script>
+      <script src="/js/google-signup.js"></script>
     </main>
   </body>
 </html>
