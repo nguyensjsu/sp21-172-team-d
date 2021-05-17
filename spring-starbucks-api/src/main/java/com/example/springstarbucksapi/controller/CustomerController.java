@@ -92,6 +92,7 @@ public class CustomerController {
 
      }
 
+    @CrossOrigin(origins = "http://localhost:8900")
     @GetMapping("/customer")
     List<Customer> getCustomers(){
         return (List<Customer>) repository.findAll();
