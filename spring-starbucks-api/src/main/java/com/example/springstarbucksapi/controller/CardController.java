@@ -3,6 +3,7 @@ package com.example.springstarbucksapi.controller;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
@@ -84,17 +85,16 @@ public class CardController {
     @CrossOrigin(origins = "http://localhost:8900")
     @GetMapping("/cards/{num}")
     StarbucksCard getOne(@PathVariable String num, HttpServletResponse res) {
-        StarbucksCard card = repository.findByCardNumber(num);
-        if(card == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Card Not Found.");
+        StarbucksCard card = repository.findByCardNumber(num)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Card Not Found"));
         return card;
     }
 
     @PostMapping("/card/activate/{num}/{code}")
     StarbucksCard activate(@PathVariable String num, @PathVariable String code, HttpServletResponse res) {
-        StarbucksCard card = repository.findByCardNumber(num);
+        StarbucksCard card = repository.findByCardNumber(num)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Card Not Found"));
 
-        if(card == null) 
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Card Not Found.");
         if(card.getCardCode().equals(code)) {
             card.setActive(true);
             repository.save(card);
@@ -132,9 +132,8 @@ public class CardController {
             String cardNum = (String) objectMapper.get("clientReferenceId");
             BigDecimal amount = new BigDecimal((long) objectMapper.get("amountTotal")).divide(new BigDecimal(100));
 
-            StarbucksCard card = repository.findByCardNumber(cardNum);
-
-            if(card == null) response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            StarbucksCard card = repository.findByCardNumber(cardNum)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Card Not Found"));
            
             BigDecimal currentBalance = card.getBalance();
             BigDecimal newBalance = currentBalance.add(amount);

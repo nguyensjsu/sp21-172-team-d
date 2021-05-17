@@ -1,6 +1,56 @@
 # Team D Journal (Team Project)
 
-Team Journals should include
+## Development - local docker
+Note: you need to `cd spring-starbucks-api` to use the make commands below
+### Create the docker network (only needed once)
+- Network name is `starbucks-api-network`
+```
+make create-network
+```
+
+### Create/launch mysql and starbucks-api containers
+- When MySQL is launched, it also creates the database, root password, and api user/password
+```
+make docker-run-all
+```
+
+### Create/Launch mysql container only
+- When MySQL is launched, it also creates the database, root password, and api user/password
+```
+make docker-run-mysql
+```
+
+### Launch api container only
+- Will crashloop if mysql isn't running
+```
+make docker-run
+```
+
+###  Delete containers - run these as needed after making a change / before re-launching the commands above
+- Clean/delete all containers
+```
+make docker-clean-all
+```
+- Clean/delete starbucks-api container
+```
+make docker-clean
+```
+- Clean/delete mysql container
+```
+make docker-clean-mysql
+```
+- Clean/delete kong container  (not currently used)
+```
+make docker-clean-kong
+```
+
+## Deployment to GKE
+TBD
+- ~~Copy mysql-deployment.yaml to cloud shell~~
+- ~~kubectl create -f mysql-deployment.yaml~~
+
+
+## Team Journals should include
 - Overall Architecture Diagram of your Cloud Deployment
 - A section for each of the following discussion the features implemented
   - Cashier's App
