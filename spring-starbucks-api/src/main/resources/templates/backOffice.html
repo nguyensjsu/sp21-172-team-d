@@ -1,0 +1,28 @@
+<!-- tag::all[] -->
+<!-- tag::head[] -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Back Office</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+  </head>
+
+  <body>
+    <h1>Back Office</h1>
+    <table>
+      <caption>Customers</caption>
+      <tr>
+          <th scope="col">Customer ID</th>
+          <th scope="col">Reward Points</th>
+      </tr>
+    <th:block th:each="customer : ${customer}">
+      <tr>
+            <td th:text="${customer.customerId}"></td>
+            <td th:text="${customer.rewardsPoints}"></td>
+      </tr>
+    </th:block>
+  </table>
+  </body>
+</html>
+<!-- end::all[] -->
