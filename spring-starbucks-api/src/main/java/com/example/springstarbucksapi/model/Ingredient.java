@@ -1,4 +1,4 @@
-package com.spring.starbuckscashier;
+package com.example.springstarbucksapi.model;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

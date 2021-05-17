@@ -1,4 +1,4 @@
-package com.spring.starbuckscashier;
+package com.example.springstarbucksapi.model;
 
 import java.util.List;
 // end::allButValidation[]
