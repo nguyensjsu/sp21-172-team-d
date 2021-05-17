@@ -35,11 +35,7 @@ public class BackOfficeController {
     public void addCustomersToModel(Model model){
       List<Customer> customerList = (List<Customer>)repository.findAll();
       model.addAttribute("customer", customerList);      
-      // for(Customer c : customerList){
-      //   System.out.println(c.getCustomerId());
-      //   model.addAttribute("customer",c);
-      // }
-
+      model.addAttribute("updatedCustomer", new Customer());
     } 
     @PostMapping
     public String updateRewards(Customer customer){

@@ -23,6 +23,17 @@
       </tr>
     </th:block>
   </table>
+
+  <form method="POST" th:action="@{/office}" th:object="${updatedCustomer}">
+
+    <h2>Update a Customer's Reward Points</h2>
+    <label for="customerId">Customer ID: </label>
+    <input type="text" th:field="*{customerId}"/>
+
+    <label for="rewardsPoints">New Rewards Points: </label>
+    <input type="number" th:field="*{rewardsPoints}"/>
+    <input type="submit" value="Submit order"/>
+  </form>
   </body>
 </html>
 <!-- end::all[] -->
