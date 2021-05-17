@@ -1,0 +1,94 @@
+<!-- tag::all[] -->
+<!-- tag::head[] -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Starbucks</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+  </head>
+
+  <body>
+    <h1>Customize Drink</h1>
+   <!-- <img th:src="@{/images/StarbucksLogo.png}" th:class="center"/-->
+
+<!-- tag::formTag[] -->
+    <form method="POST" th:object="${design}">
+    <!-- end::all[] -->
+
+    <span class="validationError"
+          th:if="${#fields.hasErrors('ingredients')}"
+          th:errors="*{ingredients}">Ingredient Error</span>
+
+    <!-- tag::all[] -->
+    <div class="grid">
+<!-- end::formTag[] -->
+<!-- end::head[] -->
+      <div class="ingredient-group" id="drink">
+        <!--style = "position: relative; left: 150px;"-->
+<!-- tag::designateWrap[] -->
+      <h3 class="center">Type of drink:</h3>
+      <div th:each="ingredient : ${drink}" class="center">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+<!-- end::designateWrap[] -->
+      </div>
+
+    <div class="ingredient-group" id="size" >
+      <!--style = "position: relative; left: 100px;"-->
+      <h3>Size:</h3>
+      <div th:each="ingredient : ${size}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+
+    <div class="ingredient-group" id="milk" >
+      <!--style = "position: relative; left: 70px; top:82px; "-->
+      <h3>Milk:</h3>
+      <div th:each="ingredient : ${milk}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+
+    <div class="ingredient-group" id="toppings" style = "position: relative; left: 0px; top:-100px;">
+      <h3 class="center">Toppings:</h3>
+      <div th:each="ingredient : ${toppings}" class="center">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+      </div>
+
+  <!--  <div class="ingredient-group" id="sauces">
+      <h3>Select your sauce:</h3>
+      <div th:each="ingredient : ${sauce}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+      </div> -->
+
+      <div style = "position: relative; left: 270px; top:-100px;">
+
+
+      <h3>Name of customer:</h3>
+      <input type="text" th:field="*{name}"/>
+      <!-- end::all[] -->
+      <span th:text="${#fields.hasErrors('name')}">XXX</span>
+      <span class="validationError"
+            th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}">Name Error</span>
+      <!-- tag::all[] -->
+      <br/>
+
+      <button>Submit drink</button>
+      </div>
+<!-- tag::closeFormTag[] -->
+    </form>
+<!-- end::closeFormTag[] -->
+  </body>
+</html>
+<!-- end::all[] -->
