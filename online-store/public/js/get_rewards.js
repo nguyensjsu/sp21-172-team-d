@@ -4,7 +4,7 @@ function get_rewards() {
     .then((res) => res.json())
     .then((uid) => {
       //call Starbucks API
-      fetch(`http://localhost:8080/customer/${uid}`)
+      fetch(`http://localhost:8080/api/customer/${uid}`)
         .then((res) => res.json())
         .then((data) => {
           let rewards = document.getElementById('rewards');
