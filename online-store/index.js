@@ -51,7 +51,7 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/views/signup.html'));
+  res.sendFile(path.join(__dirname + '/views/signin.html'));
 });
 
 app.get('/signin', (req, res) => {
