@@ -7,6 +7,7 @@ import org.springframework.validation.Errors;
 //end::baseClass[]
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 //tag::baseClass[]
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,7 +39,7 @@ public class BackOfficeController {
       model.addAttribute("updatedCustomer", new Customer());
     } 
     @PostMapping
-    public String updateRewards(Customer customer){
+    public String updateRewards(@ModelAttribute("updatedCustomer") Customer customer){
       System.out.println(customer.getCustomerId());
       System.out.println(customer.getRewardsPoints());
       return "backOffice";
