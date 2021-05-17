@@ -8,6 +8,10 @@ main {
   display: flex;
 }
 
+.col {
+  flex-direction: column;
+}
+
 .grid-container {
   display: grid;
   grid-gap: 40px;
@@ -89,6 +93,14 @@ li a {
   font-size: 3em;
 }
 
+.description {
+  font-size: 0.5em;
+}
+
+.reward_header {
+  font-size: 0.75em;
+}
+
 /* PADDING AND MARGINS */
 .no-padding {
   margin: 0;
@@ -96,5 +108,5 @@ li a {
 }
 
 .pad {
-  padding: 1.5vw;
+  padding: 1.5vw 6vw 1.5vw 6vw;
 }

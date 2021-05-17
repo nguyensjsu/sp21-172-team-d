@@ -30,18 +30,32 @@
       </div>
     </nav>
     <main>
-      <span class="container flex-center pad header">Starbucks Cards</span>
-      <div class="grid-container pad flex-center" id="card-list"></div>
-      <div style="padding-bottom: 2em">
-        <button
-          id="checkout-button"
-          onclick="add_card();"
-          class="container flex-center btn-large transparent"
-          style="max-width: 40vw"
+      <div class="container col flex-center pad header">
+        <span id="rewards" class="container flex-center"></span>
+        <span
+          id="rewards_category"
+          class="reward_header green-text text-darken-3"
+        ></span>
+        <span
+          id="rewards_description"
+          class="description"
+          style="padding-bottom: 2em"
         >
-          <i class="medium material-icons black-text">add</i>
-          <span class="black-text">Add Card</span>
-        </button>
+        </span>
+      </div>
+      <div>
+        <div class="grid-container pad flex-center" id="card-list"></div>
+        <div style="padding-bottom: 2em">
+          <button
+            id="checkout-button"
+            onclick="add_card();"
+            class="container flex-center btn-large transparent"
+            style="max-width: 40vw"
+          >
+            <i class="medium material-icons black-text">add</i>
+            <span class="black-text">Add Card</span>
+          </button>
+        </div>
       </div>
     </main>
     <!-- ALWAYS INCLUDE THESE -->
@@ -52,6 +66,6 @@
 
     <script type="module" src="/js/get_cards.js"></script>
     <script src="/js/add_card.js"></script>
-
+    <script src="/js/get_rewards.js"></script>
   </body>
 </html>
