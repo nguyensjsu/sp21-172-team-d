@@ -40,8 +40,9 @@ public class BackOfficeController {
     } 
     @PostMapping
     public String updateRewards(@ModelAttribute("updatedCustomer") Customer customer){
-      System.out.println(customer.getCustomerId());
-      System.out.println(customer.getRewardsPoints());
+      Customer updatedCustomer = repository.findByCustomerId(customer.getCustomerId());
+      updatedCustomer.setRewardsPoints(customer.getRewardsPoints());
+      repository.save(updatedCustomer);
       return "backOffice";
     }
 
