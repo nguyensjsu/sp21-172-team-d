@@ -35,5 +35,6 @@ public class Customer{
     // }
     @OneToMany(mappedBy = "customer", cascade={CascadeType.ALL})
 	private List<StarbucksCard> starbucksCards;
+    
 }
     
