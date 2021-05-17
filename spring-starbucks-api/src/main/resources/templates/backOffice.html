@@ -1,8 +1,7 @@
 <!-- tag::all[] -->
 <!-- tag::head[] -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>Back Office</title>
     <link rel="stylesheet" th:href="@{/styles.css}" />
@@ -11,29 +10,33 @@
   <body>
     <h1>Back Office</h1>
     <table>
-      <caption>Customers</caption>
+      <caption>
+        Customers
+      </caption>
       <tr>
-          <th scope="col">Customer ID</th>
-          <th scope="col">Reward Points</th>
+        <th scope="col">Customer ID</th>
+        <th scope="col">Reward Points</th>
       </tr>
-    <th:block th:each="customer : ${customer}">
-      <tr>
-            <td th:text="${customer.customerId}"></td>
-            <td th:text="${customer.rewardsPoints}"></td>
-      </tr>
-    </th:block>
-  </table>
+      <th:block th:each="customer : ${customer}">
+        <tr>
+          <td th:text="${customer.customerId}"></td>
+          <td th:text="${customer.rewardsPoints}"></td>
+        </tr>
+      </th:block>
+    </table>
 
-  <form method="POST" th:action="@{/office}" th:object="${updatedCustomer}">
+    <form method="POST" th:action="@{/office}" th:object="${updatedCustomer}">
+      <h2>Update a Customer's Reward Points</h2>
+      <label for="customerId">Customer ID: </label>
+      <input type="text" th:field="*{customerId}" />
 
-    <h2>Update a Customer's Reward Points</h2>
-    <label for="customerId">Customer ID: </label>
-    <input type="text" th:field="*{customerId}"/>
-
-    <label for="rewardsPoints">New Rewards Points: </label>
-    <input type="number" th:field="*{rewardsPoints}"/>
-    <input type="submit" value="Submit order"/>
-  </form>
+      <label for="rewardsPoints">New Rewards Points: </label>
+      <input type="number" th:field="*{rewardsPoints}" />
+      <input type="submit" value="Submit order" />
+    </form>
+    <form th:action="@{/logout}" method="post">
+      <input type="submit" value="Sign Out" />
+    </form>
   </body>
 </html>
 <!-- end::all[] -->
