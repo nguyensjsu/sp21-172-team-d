@@ -43,6 +43,7 @@ public class CustomerController {
 
         StarbucksCard newCard = new StarbucksCard();
 
+        // TODO: Issue #18 Consolidate new card logic
         Random random = new Random();
         int num = random.nextInt(900000000) + 100000000;
         int code = random.nextInt(900) + 100;
@@ -71,6 +72,7 @@ public class CustomerController {
 
         if(customer == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer Not Found.");
 
+        // TODO: #18
         StarbucksCard newCard = new StarbucksCard();
         Random random = new Random();
         int num = random.nextInt(900000000) + 100000000;

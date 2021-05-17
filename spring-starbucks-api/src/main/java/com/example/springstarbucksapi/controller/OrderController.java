@@ -253,6 +253,8 @@ class OrderController {
     */
     @GetMapping("/orders")
     Iterable<Order> all() {
+    // CollectionModel<EntityModel<Order>> all() {
+    // List<Order> all() {
         log.info("Received an order listing GET request for ALL orders/registers");
         return orderRepository.findAll();
     }

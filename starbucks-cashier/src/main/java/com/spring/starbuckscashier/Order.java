@@ -37,13 +37,13 @@ public class Order {
   private String zip;
   //end::allButValidation[]
 
-  @CreditCardNumber(message="Not a valid credit card number")
+  @CreditCardNumber(message="Not a valid starbucks card number")
   //tag::allButValidation[]
   private String ccNumber;
   //end::allButValidation[]
 
-  @Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",
-           message="Must be formatted MM/YY")
+  //@Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",
+         //  message="Must be formatted MM/YY")
   //tag::allButValidation[]
   private String ccExpiration;
   //end::allButValidation[]

@@ -53,6 +53,18 @@ public class CardController {
         this.repository = repository;
     }
 
+    /*
+        POST 	/cards
+        Create a new Starbucks Card.
+
+		{
+            "CardNumber": "498498082",
+            "CardCode": "425",
+            "Balance": 20,
+            "Activated": false,
+            "Status": "New Card."
+		}
+    */
     @PostMapping("/cards")
     StarbucksCard newCard() {
         StarbucksCard newCard = new StarbucksCard();
