@@ -1,5 +1,5 @@
 // tag::head[]
-package com.spring.springstarbucksapi.controller;
+package com.example.springstarbucksapi.controller;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
-import com.spring.starbuckscashier.Ingredient;
-import com.spring.starbuckscashier.Ingredient.Type;
-import com.spring.starbuckscashier.Drink;
+
+import com.example.springstarbucksapi.model.Ingredient;
+import com.example.springstarbucksapi.model.Ingredient.Type;
+import com.example.springstarbucksapi.model.Drink;
 
 @Slf4j
 @Controller
