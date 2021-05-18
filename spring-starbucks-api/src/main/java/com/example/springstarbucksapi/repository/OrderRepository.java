@@ -1,8 +1,8 @@
 package com.example.springstarbucksapi.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.example.springstarbucksapi.model.*;
-
-public interface OrderRepository extends JpaRepository<Order, Long> {
+import org.springframework.data.repository.CrudRepository;
+import com.example.springstarbucksapi.model.Order;
+public interface OrderRepository extends CrudRepository<Order, Long>{
+    
 }

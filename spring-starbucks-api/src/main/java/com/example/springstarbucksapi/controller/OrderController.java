@@ -3,17 +3,10 @@ package com.example.springstarbucksapi.controller;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;  // methodOn, linkTo...
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.mediatype.problem.Problem;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -176,13 +169,6 @@ class OrderController {
         registerRepository.save(currentRegister);
         log.info("Register " + regid + " is now available!");
         return ResponseEntity.ok().body("Active Order Cleared!");
-        
-        // return ResponseEntity //
-        //         .status(HttpStatus.METHOD_NOT_ALLOWED) //
-        //         .header(HttpHeaders.CONTENT_TYPE, MediaTypes.HTTP_PROBLEM_DETAILS_JSON_VALUE) //
-        //         .body(Problem.create() //
-        //                 .withTitle("Method not allowed") //
-        //                 .withDetail("You can't cancel an order that is in the " + order.getStatus() + " status"));
     }
 
     /*
@@ -225,7 +211,7 @@ class OrderController {
         // }
 
         // Check if card is active
-        if (! paymentCard.isActivated()) {
+        if (! paymentCard.isActive()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Invalid card!");
         }
 
@@ -266,8 +252,9 @@ class OrderController {
 		}
     */
     @GetMapping("/orders")
+    Iterable<Order> all() {
     // CollectionModel<EntityModel<Order>> all() {
-    List<Order> all() {
+    // List<Order> all() {
         log.info("Received an order listing GET request for ALL orders/registers");
         return orderRepository.findAll();
     }

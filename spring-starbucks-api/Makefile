@@ -1,8 +1,8 @@
 account = rustypedrosa
-app = starbucks-api
-network = kong-network
-version-app = 4.0
-version-docker = v4
+app = spring-starbucks-api
+network = starbucks-api-network
+version-app = 2.0
+version-docker = v2
 
 all: clean
 
@@ -34,17 +34,19 @@ docker-push:
 	docker build -t $(account)/$(app):$(version-docker) .
 	docker push $(account)/$(app):$(version-docker)
 	
-docker-run-standalone: docker-build
-	docker run --name $(app) --network $(network) -td -p 8080:8080 $(app)
+docker-run: docker-build
+	docker run -td --name $(app) --network $(network) -p 8080:8080 \
+	-e MYSQL_HOST=starbucks-mysql \
+	$(app)
 	docker ps
 
-docker-run: docker-build
-	docker run --name $(app) --network $(network) -td $(app)
+docker-run-with-kong: docker-build
+	docker run -td --name $(app) --network $(network) $(app)
 	docker ps
 
 docker-run-kong:
 	docker run -d --name kong \
-    --network=kong-network \
+    --network $(network) \
     -e "KONG_DATABASE=off" \
     -e "KONG_PROXY_ACCESS_LOG=/dev/stdout" \
     -e "KONG_ADMIN_ACCESS_LOG=/dev/stdout" \
@@ -60,22 +62,33 @@ docker-run-kong:
 
 #	docker run -d --network gumball --name mysql -td -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cmpe172 mysql:8.0
 docker-run-mysql:
-	docker run --name starbucks-mysql --network $(network) -td -e MYSQL_ROOT_PASSWORD=cmpe172 mysql:8.0
+	docker run -td --name starbucks-mysql --network $(network) -p 3306:3306 \
+	-e MYSQL_DATABASE=starbucks \
+	-e MYSQL_ROOT_PASSWORD=cmpe172 \
+	-e MYSQL_USER=springuser \
+	-e MYSQL_PASSWORD=ThePassword \
+	mysql:8.0
 	docker ps
 
-docker-run-all: docker-run docker-run-kong
+docker-run-all: docker-run docker-run-mysql
+# docker-run-all: docker-run docker-run-kong
 
 docker-clean:
 	-docker stop $(app)
 	-docker rm $(app)
 	-docker rmi $(app)
 
+docker-clean-mysql:
+	-docker stop starbucks-mysql
+	-docker rm starbucks-mysql
+	-docker rmi starbucks-mysql
+
 docker-clean-kong:
 	-docker stop kong
 	-docker rm kong
 	-docker rmi kong
 
-docker-clean-all: docker-clean docker-clean-kong
+docker-clean-all: docker-clean docker-clean-mysql docker-clean-kong
 
 docker-shell:
 	docker exec -it $(app) bash
