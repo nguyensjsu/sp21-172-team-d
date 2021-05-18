@@ -39,7 +39,7 @@ public class BackOfficeController {
       model.addAttribute("updatedCustomer", new Customer());
     } 
     @PostMapping
-    public String updateRewards(@ModelAttribute("updatedCustomer") Customer customer){
+    public String updateRewards(@ModelAttribute("command") Customer customer){
       Customer updatedCustomer = repository.findByCustomerId(customer.getCustomerId());
       updatedCustomer.setRewardsPoints(customer.getRewardsPoints());
       repository.save(updatedCustomer);

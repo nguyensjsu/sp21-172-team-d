@@ -35,7 +35,7 @@ public class CustomerController {
     }
 
     @CrossOrigin(origins = "http://localhost:8900")
-    @PostMapping("/customer")
+    @PostMapping("/api/customer")
     @ResponseStatus(HttpStatus.CREATED)
     Customer newCustomer(@RequestBody Customer customer){ //Needs to contain the customerId in the body of the request
         System.out.println("Creating Customer: #" + customer.getCustomerId());
@@ -64,7 +64,7 @@ public class CustomerController {
     }
 
     @CrossOrigin(origins = "http://localhost:8900")
-    @PostMapping("/customer/card/{customerId}")
+    @PostMapping("/api/customer/card/{customerId}")
     @ResponseStatus(HttpStatus.CREATED)
     StarbucksCard addCard(@PathVariable String customerId){
         System.out.println("Creating Card for Customer: #" + customerId);
@@ -95,13 +95,13 @@ public class CustomerController {
      }
 
     @CrossOrigin(origins = "http://localhost:8900")
-    @GetMapping("/customer")
+    @GetMapping("/api/customer")
     List<Customer> getCustomers(){
         return (List<Customer>) repository.findAll();
     }
 
     @CrossOrigin(origins = "http://localhost:8900")
-    @GetMapping("/customer/{customerId}")
+    @GetMapping("/api/customer/{customerId}")
     Customer getCustomer(@PathVariable String customerId){
         Customer customer = repository.findByCustomerId(customerId);
 
@@ -110,7 +110,7 @@ public class CustomerController {
     }
 
     @CrossOrigin(origins = "http://localhost:8900")
-    @GetMapping("/customer/cards/{customerId}")
+    @GetMapping("/api/customer/cards/{customerId}")
     List<StarbucksCard> getCards(@PathVariable String customerId){
         Customer customer = repository.findByCustomerId(customerId);
 
