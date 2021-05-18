@@ -53,19 +53,7 @@ public class CardController {
         this.repository = repository;
     }
 
-    /*
-        POST 	/cards
-        Create a new Starbucks Card.
-
-		{
-            "CardNumber": "498498082",
-            "CardCode": "425",
-            "Balance": 20,
-            "Activated": false,
-            "Status": "New Card."
-		}
-    */
-    @PostMapping("/cards")
+    @PostMapping("/api/cards")
     StarbucksCard newCard() {
         StarbucksCard newCard = new StarbucksCard();
 
@@ -81,12 +69,12 @@ public class CardController {
         return repository.save(newCard);
     }
 
-    @GetMapping("/cards") 
+    @GetMapping("/api/cards") 
     List<StarbucksCard> allCards() {
         return (List<StarbucksCard>) repository.findAll();
     }
 
-    @DeleteMapping("/cards")
+    @DeleteMapping("/api/cards")
     Message deleteAll() {
         repository.deleteAll();
         Message msg = new Message();
@@ -95,14 +83,14 @@ public class CardController {
     }
 
     @CrossOrigin(origins = "http://localhost:8900")
-    @GetMapping("/cards/{num}")
+    @GetMapping("/api/cards/{num}")
     StarbucksCard getOne(@PathVariable String num, HttpServletResponse res) {
         StarbucksCard card = repository.findByCardNumber(num)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Card Not Found"));
         return card;
     }
 
-    @PostMapping("/card/activate/{num}/{code}")
+    @PostMapping("/api/card/activate/{num}/{code}")
     StarbucksCard activate(@PathVariable String num, @PathVariable String code, HttpServletResponse res) {
         StarbucksCard card = repository.findByCardNumber(num)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Error: Card Not Found"));
