@@ -63,10 +63,10 @@ docker-run-kong:
 #	docker run -d --network gumball --name mysql -td -p 3306:3306 -e MYSQL_ROOT_PASSWORD=cmpe172 mysql:8.0
 docker-run-mysql:
 	docker run -td --name starbucks-mysql --network $(network) -p 3306:3306 \
-	-e MYSQL_DATABASE=starbucks \
+	-e MYSQL_DATABASE=db_starbucks \
 	-e MYSQL_ROOT_PASSWORD=cmpe172 \
-	-e MYSQL_USER=springuser \
-	-e MYSQL_PASSWORD=ThePassword \
+	-e MYSQL_USER=starbucks-user \
+	-e MYSQL_PASSWORD=starbucks-password \
 	mysql:8.0
 	docker ps
 
