@@ -37,7 +37,7 @@ public class StarbucksCard {
     @JoinColumn(name="customerId")
     private Customer customer;
 
-	  public StarbucksCard(BigDecimal initialBalance, boolean activated, String status) {
+	  public StarbucksCard(BigDecimal initialBalance, boolean active, String status) {
         Random random = new Random();
         this.cardNumber = String.valueOf(random.nextInt(900000000) + 100000000);
         this.cardCode = String.valueOf(random.nextInt(900) + 100);
@@ -46,8 +46,8 @@ public class StarbucksCard {
 		    this.status = status;
     }
 	
-	public StarbucksCard(String initialBalance, boolean activated, String status) {
-	    this(new BigDecimal(initialBalance), activated, status);
+	public StarbucksCard(String initialBalance, boolean active, String status) {
+	    this(new BigDecimal(initialBalance), active, status);
 	}
 	
 	public BigDecimal withdraw(BigDecimal amount) {
