@@ -63,7 +63,7 @@ class OrderController {
             "Status": "Ready for Payment."
         }
     */
-    @PostMapping("/order/register/{regid}")
+    @PostMapping("/api/order/register/{regid}")
     @ResponseStatus(HttpStatus.CREATED)
     Order newOrder(@PathVariable Long regid, @RequestBody Order requestedOrder) {
         log.info("Received an order POST request for " + requestedOrder + " at register " + regid);
@@ -120,7 +120,7 @@ class OrderController {
 		  "Status": "Ready for Payment."
 		}
     */
-    @GetMapping("/order/register/{regid}")
+    @GetMapping("/api/order/register/{regid}")
     @ResponseStatus(HttpStatus.OK)
     Order getStatus(@PathVariable Long regid) {
         log.info("Received an order GET request for register " + regid);
@@ -139,7 +139,7 @@ class OrderController {
 		  "Status": "Active Order Cleared!"
 		}
     */
-    @DeleteMapping("/order/register/{regid}")
+    @DeleteMapping("/api/order/register/{regid}")
     ResponseEntity<?> cancelActiveOrder(@PathVariable Long regid) {
         log.info("Received an order DELETE request for register " + regid);
         
@@ -185,7 +185,7 @@ class OrderController {
 		  "Status": ""
 		}
     */
-    @PostMapping("/order/register/{regid}/pay/{cardNumber}")
+    @PostMapping("/api/order/register/{regid}/pay/{cardNumber}")
     @ResponseStatus(HttpStatus.OK)
     StarbucksCard processOrder(@PathVariable Long regid, @PathVariable String cardNumber) {
         log.info("Received an order payment POST request for register " + regid);
@@ -251,7 +251,7 @@ class OrderController {
 		  }
 		}
     */
-    @GetMapping("/orders")
+    @GetMapping("/api/orders")
     Iterable<Order> all() {
     // CollectionModel<EntityModel<Order>> all() {
     // List<Order> all() {
@@ -268,7 +268,7 @@ class OrderController {
 		}
 
     */
-    @DeleteMapping("/orders")
+    @DeleteMapping("/api/orders")
     ResponseEntity<?> deleteAllOrders() {
         log.info("Received an order DELETE request for ALL orders/registers");
 
