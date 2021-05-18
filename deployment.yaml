@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       name: starbucks-api
-  replicas: 2 # tells deployment to run 2 pods matching the template
+  replicas: 1 # tells deployment to run 2 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
       # unlike pod.yaml, the name is not included in the meta data as a unique name is
@@ -19,12 +19,10 @@ spec:
       containers:
       - name: starbucks-api
         image: gcr.io/PROJECT_ID/IMAGE:TAG
+      - env:
+        - name: MYSQL_HOST
+          value: starbucks-mysql
         ports:
         - containerPort: 8080
-      - image: gcr.io/cloudsql-docker/gce-proxy:1.18.0
-        name: cloud-sql-proxy
-        command:
-          - "/cloud_sql_proxy"
-          - "-instances=cmpe172-312511:us-central1-c:mysql-starbucks=tcp:3306"
         securityContext:
           runAsNonRoot: true
