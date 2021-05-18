@@ -48,6 +48,8 @@ make docker-clean-kong
 TBD
 - ~~Copy mysql-deployment.yaml to cloud shell~~
 - ~~kubectl create -f mysql-deployment.yaml~~
+kubectl create -f service-api.yaml
+kubectl apply -f ingress-api.yaml
 
 
 ## Team Journals should include

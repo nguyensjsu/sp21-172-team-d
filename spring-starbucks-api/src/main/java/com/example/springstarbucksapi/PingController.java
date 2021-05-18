@@ -36,7 +36,7 @@ class PingController {
 	}
 
 
-    @GetMapping("/ping")
+    @GetMapping(value={"/ping", "/"})
     public Ping ping() {
 		return new Ping("Starbucks API version 2.0 alive!");
     }
