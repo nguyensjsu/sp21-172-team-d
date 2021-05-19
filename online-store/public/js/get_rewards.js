@@ -4,7 +4,7 @@ function get_rewards() {
     .then((res) => res.json())
     .then((uid) => {
       //call Starbucks API
-      fetch(`http://localhost:8080/api/customer/${uid}`)
+      fetch(`http://starbucks.pedrosatech.com/api/customer/${uid}`)
         .then((res) => res.json())
         .then((data) => {
           let rewards = document.getElementById('rewards');
@@ -13,7 +13,7 @@ function get_rewards() {
           let title = document.getElementById('rewards_category');
           let description = document.getElementById('rewards_description');
           console.log(data);
-          icon.className = 'medium material-icons yellow-text text-darken-1';
+          icon.className = 'medium material-icons amber-text text-accent-4';
           icon.textContent = 'star';
           amount.textContent = data.rewardsPoints;
 
@@ -40,6 +40,8 @@ function get_rewards() {
             title.textContent = 'Customize your drink';
             description.textContent =
               'Make your drink just right with an extra espresso shot, dairy substitute or a dash of your favorite syrup.';
+          } else {
+            description.textContent = 'Keep earning points to redeem rewards!';
           }
         });
     });

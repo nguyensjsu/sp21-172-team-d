@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
           };
 
           /*creating new customer object through Starbucks-API*/
-          fetch('http://localhost:8080/api/customer', {
+          fetch('http://starbucks.pedrosatech.com/api/customer', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=UTF-8',

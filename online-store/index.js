@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
 const stripe = require('stripe')(
-  'sk_test_51IredNELdiv23YD49fQbtIjQn756WgbaAQ29nO5YjL3EsnaVQNUhKsdCMcXgvI7IKrIiEjRZGV3dOz4cXoa6qLUm00DNVYfppE'
+  'sk_test_51Iio2XDyQynlG6QghXMQyA02YlBE3HKUF5gQPHkDYQApUw6QP4lx6pRVCBU6u7CpOQjfQWARw3XxkY13fHtIaEWj00lMadSgqP'
 );
 
 admin.initializeApp({

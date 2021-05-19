@@ -20,6 +20,12 @@ main {
   align-items: center;
 }
 
+.image-container {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
 .flex-center {
   justify-content: center;
   align-items: center;
@@ -36,9 +42,9 @@ main {
 }
 
 .logo {
-  max-width: 50px;
+  max-width: 3.5em;
   height: auto;
-  padding: 1px;
+  padding-top: 0.4em;
 }
 
 .sticky {
@@ -51,7 +57,7 @@ main {
   opacity: 0.6;
 }
 
-img {
+div > img {
   /* display: block;
   margin: auto; */
   padding: 1vw 0 1vw 0;

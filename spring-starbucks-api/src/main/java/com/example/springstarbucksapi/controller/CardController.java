@@ -36,7 +36,7 @@ import com.stripe.net.Webhook;
 @RestController
 public class CardController {
     private final CardRepository repository;
-    String endpointSecret = "whsec_UL8UQGRyWWABISRZEwyTkIgs8zdXB7do";
+    String endpointSecret = "whsec_VwCKpftrJ9cK8fJ7ZesA5IvBsR8nvRw4";
 
     class Message {
         private String status;

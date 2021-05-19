@@ -6,7 +6,7 @@ function get_card() {
   let cardNum = urlArray[urlArray.length - 1];
 
   //call Starbucks API
-  fetch(`http://localhost:8080/api/cards/${cardNum}`)
+  fetch(`http://starbucks.pedrosatech.com/api/cards/${cardNum}`)
     .then((res) => res.json())
     .then((data) => {
       let card = document.getElementById('card');

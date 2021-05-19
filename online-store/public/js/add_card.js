@@ -3,7 +3,7 @@ add_card = () => {
     .then((res) => res.json())
     .then((uid) => {
       //call Starbucks API
-      fetch(`http://localhost:8080/api/customer/card/${uid}`, {
+      fetch(`http://starbucks.pedrosatech.com/api/customer/card/${uid}`, {
         method: 'POST',
       })
         .then((res) => res.json())
