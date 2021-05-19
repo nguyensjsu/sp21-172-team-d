@@ -4,48 +4,43 @@
 - Overall Architecture Diagram of your Cloud Deployment
 ![](images/gcp-deployment.png)
 
-- A section for each of the following discussion the features implemented
-  - Cashier's App
+- **A section for each of the following discussion the features implemented - Discussion with screenshot evidence of how each technical requirement is met.**  100 Points Total
+  - **Cashier's App using Spring Security for User Authentication**
     - What features were implemented?
       - Cashier can select the type, size of the drink but also select if the customer wants to add a type of milk and/or add any toppings like whipped cream, drizzle, etc.
     - UI was based on the needs of a cashier when receiving an order and customize it based on what the customer wants.
     - Spring Boot was used to develop the cashier's app
-  - Backoffice Help Desk App
+  - **Backoffice Help Desk App using Spring Security for User Authentication**
     - What features were implemented?
-  - Online Store
+  - **SSO via OKTA or other providers is a "bonus" (i.e. Extra Credit - 10 points)**
+    - todo
+  - **Online Store Front (20 points)**
+    - todo
     - What features were implemented?
-  - REST API 
+  - **REST API (20 points)**
     - Final design with sample request/response
-  - Integrations
+      - This example with tRoLl CaSe is indicative of our careful use of Spring JPA Repositories, using a method called `findByDrinkIgnoreCaseAndSizeIgnoreCase` to allow for a dynamically generated database search in which both of the query predicates are case-insensitive
+![](images/api-troll.png)
+    - Our API was carried over from the labs of two team members, merged together and expanded.  It includes tables/classes for `Customer`, `Drink`, `Order`, `Price` and `Register` in order to move business information out of application memory and into provide persistent storage in our database.
+![](images/db-erd.png)
+    - The API was tested via Insomnia.
+      - We used `insomnia-plugin-default-headers` to allow us to run the entire suite of tests in one click
+![](images/api-insomnia.png)
+    - We used insomnia-plugin-default-headers to allow us to dynamically insert the Kong API secret into every request's header
+![](images/api-insomnia-headers.png)
+  - **Kong API Gateway or other API authentication gateway is a "bonus" (i.e. Extra Credit = 10 points)**
+    - While we had a working Kong implementation, we had to remove it and switch to a standard GKE ingress because of some CORS issues which prevented external services from connecting to our API.
+    - Integrations (Payment API) (20 points)
     - Which integrations were selected?
-  - Cloud Deployments
-    - Please see Deployment to Google Cloud section, below
-    - How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?
+      - Stripe
+  - **Cloud Deployment (20 points)**
+    - Please see the section below titled *Deployment to Google Cloud*
+    - **How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?**
       - While our front end is scalable via automatic horizontal scaling as provided by GKE, some basic enhancements to guarantee unique keys to prevent collisions might be in order.
       - Currently, our deployment uses an ephemeral MySQL container with no persistent storage.  We abandoned our deployment to Cloud SQL due to cost (almost $10/day just for the VM, which even at the minimum tier still receives dedicated hardware).
         - We did, however, spin up a Cloud SQL MySQL server instance.  Our API would connect to it using the Cloud SQL sidecar container.  The sidecar container is a proxy server that actually runs within the API container.  This enables our API to connect via the Cloud SQL Auth proxy, which simply looks like a MySQL server at localhost.  It took a tremendous amount of time to set up all the moving parts.  https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine
 - Technical Requirements
-  - Discussion with screenshot evidence of how each technical requirement is met.  100 Points Total
-    - Cashier's App & Backoffice Help Desk using Spring Security for User Authentication (20 points)
-      - todo
-    - SSO via OKTA or other providers is a "bonus" (i.e. Extra Credit - 10 points)
-      - todo
-    - Online Store Front (20 points)
-      - todo
-    - REST API (20 points)
-      - Our API was carried over from the labs of two team members, merged together.  It was updated to include tables/classes for `Customer`, `Drink`, `Order`, `Price` and `Register` in order to move business information out of application memory and into provide persistent storage in our database.
-![](images/db-erd.png)
-      - The API was tested via Insomnia.
-        - We used `insomnia-plugin-default-headers` to allow us to run the entire suite of tests in one click
-![](images/api-insomnia.png)
-      - We used insomnia-plugin-default-headers to allow us to dynamically insert the Kong API secret into every request's header
-![](images/api-insomnia-headers.png)
-    - Kong API Gateway or other API authentication gateway is a "bonus" (i.e. Extra Credit = 10 points)
-      - While we had a working Kong implementation, we had to remove it and switch to a standard GKE ingress because of some CORS issues which prevented external services from connecting to our API.
-    - Integrations (Payment API) (20 points)
-      - Stripe
-    - Cloud Deployment (20 points)
-      - Please see the section below titled Deployment to Google Cloud
+      - 
 ---
 
 ## Deployment to local docker (for development on your local machine)
