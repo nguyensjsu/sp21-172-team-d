@@ -19,8 +19,11 @@
   - Integrations
     - Which integrations were selected?
   - Cloud Deployments
-    - Design Notes on GitHub an Architecture Diagram of the overall Deployment.
+    - Please see Deployment to Google Cloud section, below
     - How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?
+      - While our front end is scalable via automatic horizontal scaling as provided by GKE, some basic enhancements to guarantee unique keys to prevent collisions might be in order.
+      - Currently, our deployment uses an ephemeral MySQL container with no persistent storage.  We abandoned our deployment to Cloud SQL due to cost (almost $10/day just for the VM, which even at the minimum tier still receives dedicated hardware).
+        - We did, however, spin up a Cloud SQL MySQL server instance.  Our API would connect to it using the Cloud SQL sidecar container.  The sidecar container is a proxy server that actually runs within the API container.  This enables our API to connect via the Cloud SQL Auth proxy, which simply looks like a MySQL server at localhost.  It took a tremendous amount of time to set up all the moving parts.  https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine
 - Technical Requirements
   - Discussion with screenshot evidence of how each technical requirement is meet.
 
@@ -79,7 +82,7 @@ This runs:
 ---
 
 ### Launch api container only
-Runs the API container and sets the MYSQL_HOST environment variable, which gets picked up by the API's application.properties.  Will crash/crashloop if the mysql container isn't running
+Runs the API container and sets the MYSQL_HOST environment variable, which gets picked up by the API's `application.properties`.  Will crash/crashloop if the mysql container isn't running
 ```
 make docker-run
 ```
@@ -114,7 +117,7 @@ make docker-clean-kong
 
 ---
 
-## Google Cloud / Google Kubernetes Engine deployment
+## Deployment to Google Cloud (Google Kubernetes Engine)
 ### 0. Preparation
 You will need to create a project, and create a cluster within that project
 ### 1. Deployments
@@ -122,10 +125,10 @@ The first deployment we will create is for mysql.  The publicly available `mysql
 
 ---
 
-#### mysql deployment
+#### MySQL Deployment
 TODO: Create a mysql-deployment.yaml
 
-For now, you can create a deployment manually via the cloud GUI with the deploy button
+We use a standard mysql container with no special configuration beyond the use of environment variables.  For now, you can create a deployment manually via the cloud GUI with the deploy button.
 
 ![](images/gcp-manual-deploy.png)
 
@@ -145,20 +148,72 @@ Click DEPLOY when finished.
 Note: the environment variables are stored/accessible from the `Configuration` tab of GKE instead of within the deployment's generated yaml file:
 ![](images/gcp-mysql-env-config.png)
 
+---
+
+#### Starbucks API deployment
+CI/CD of our application API is handled by a pair of GitHub actions.
+- Continuous integration is run whenever a new commit is pushed to main or a PR against main is opened.
+  - The CI configuration file is [.github\workflows\gradle.yml](.github\workflows\gradle.yml)
+- Continuous deployment is triggered by the creation of a new GitHub Release.
+  - The CD configuration file is [.github\workflows\google.yml](.github\workflows\google.yml)
+
+To push new code to Google Cloud Platform, simply merge your pull request into main.  You can watch the build and deployment processes here:
+https://github.com/nguyensjsu/sp21-172-team-d/actions
 
 ---
 
-TODO: API deployment
+### 3. Services
 
-Manual vs CI/CD
+GKE services allow containers to connect to each other.  For now, the MySQL service must be created manually.  The API service is created automatically by our CI/CD process.
 
-Services
+![](images/gcp-services.png)
 
-Ingress
+- The MySQL deployment needs a service to expose port 3306 to the rest of GKE
+- The API deployment needs a service to expose port 8080 for the ingress
 
-- ~~Copy mysql-deployment.yaml to cloud shell~~
-- ~~kubectl create -f mysql-deployment.yaml~~
-- `kubectl create -f service.yaml`
-- `kubectl apply -f ingress-api-dep.yaml`
-  - Note: the previous ingress api, ``, has been deprecated, but is currently still useable
-  - The new api is `networking.k8s.io/v1`, which is more complicated to set up and is not currently working for app API endpoints.  If needed, an incomplete ingress yaml file is available in this repository at [ingress-api-dep.yaml](ingress-api-dep.yaml)
+---
+
+#### MySQL Service
+Comment: The MySQL service must be up in order for the API to be able to connect to the database.  Instead of using a container name as the hostname, the API needs to point to the service name, `starbucks-mysql-service`. 
+
+To create the service, upload service-mysql.yaml to your cloud shell and run:
+```
+kubectl create -f service-mysql.yaml
+```
+
+---
+
+#### API Service
+The API service is created automatically by our CI/CD process.  The configuration file for the service is located at [service.yaml](service.yaml).
+
+If you need to create the service manually, it can open port 8080 without redirecting it, and it should point to the api deployment.
+```
+kubectl create -f service.yaml
+```
+
+---
+
+#### Ingress
+- Kong API
+  - Unfortunately, due to difficulties with CORS and some of our external services, we have had to tear down our Kong ingress.
+  - For the time being, we have implemented a standard GKE ingress.
+
+![](images/gcp-ingress.png)
+
+To deploy the standard ingress, upload [ingress-api-v1beta1.yaml](ingress-api-v1beta1.yaml) to your cloud shell and run
+
+```
+kubectl apply -f ingress-api-v1beta1.yaml
+```
+
+Note: Currently, we are using the v1beta1 ingress API, which has been deprecated as of May 2021.  The new api is `networking.k8s.io/v1`, which is more complicated to set up and is not currently working for app API endpoints.  If needed, an incomplete ingress yaml file with the new API is available in this repository at [ingress-api-k8s.yaml](ingress-api-k8s.yaml)
+
+Comment: Some groups have had trouble with their ingress reporting backend services as unknown or unhealthy:
+
+()[]
+
+There are three fixes for this, detailed at: https://stackoverflow.com/questions/39294305/kubernetes-unhealthy-ingress-backend/39297106#39297106
+
+We have chosen to simply route `/` so that it returns a 200 response.
+
+![](images/gcp-ingress-details.png)
