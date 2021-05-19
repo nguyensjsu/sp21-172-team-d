@@ -2,6 +2,10 @@
 
 ## Pull Requests
 https://github.com/nguyensjsu/sp21-172-team-d/pulls?q=is%3Apr+author%3ARustyPedrosa
+
+## Commits
+https://github.com/nguyensjsu/sp21-172-team-d/commits?author=RustyPedrosa
+
 ## Final Week
 - Since I need to redeploy to cloud anyway, I am going to see if I can utilize what we learned in the CI/CD lecture.
 - First attempt failed CI:

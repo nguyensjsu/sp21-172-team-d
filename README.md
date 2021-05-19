@@ -42,8 +42,23 @@
     - ** Can someone please add a discussion of what CORS is and what problems you had with Kong running?
 
   - **Integrations (Payment API) (20 points)**
-  - Which integrations were selected?
-    - Stripe
+    - Which integrations were selected?
+      - Stripe
+
+  - **CI/CD (extra credit?)**
+    - Continuous integration was relatively easy to implement
+      - It took some sleuthing to figure out that we can add a default working directory.  This was needed because our API is inside of a subfolder instead of a root.  Simply adding a tep to `cd` into a path isn't sufficient, because every step is run separately
+        ```
+        defaults:
+          run:
+            working-directory: ./spring-starbucks-api
+        ```
+    - Continuous deployment took a lot of figuring out.  After tearing apart most of the GKE deployment, it turns out there is a GKE ingress feature that marks the backend as unhealthy if it doesn't give a 200 response on `/`.  In other words, the CI itself was just fine, and we were just deploying code that GKE thought was invalid.  The fix was to simply point `/` to something.
+    - The CI configuration file is [.github\workflows\gradle.yml](.github\workflows\gradle.yml)
+    - The CD configuration file is [.github\workflows\google.yml](.github\workflows\google.yml)
+    - The build and deployment history can be seen at: https://github.com/nguyensjsu/sp21-172-team-d/actions
+    ![](images/ci-cd.png)
+
 
   - **Cloud Deployment (20 points)**
     - Please see the section below titled *Deployment to Google Cloud*
@@ -51,8 +66,7 @@
       - While our front end is scalable via automatic horizontal scaling as provided by GKE, some basic enhancements to guarantee unique keys to prevent collisions might be in order.
       - Currently, our deployment uses an ephemeral MySQL container with no persistent storage.  We abandoned our deployment to Cloud SQL due to cost (almost $10/day just for the VM, which even at the minimum tier still receives dedicated hardware).
         - We did, however, spin up a Cloud SQL MySQL server instance.  Our API would connect to it using the Cloud SQL sidecar container.  The sidecar container is a proxy server that actually runs within the API container.  This enables our API to connect via the Cloud SQL Auth proxy, which simply looks like a MySQL server at localhost.  It took a tremendous amount of time to set up all the moving parts.  https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine
-- Technical Requirements
-      - 
+
 ---
 
 ## Deployment to local docker (for development on your local machine)
