@@ -5,18 +5,23 @@
 ![](images/gcp-deployment.png)
 
 - **A section for each of the following discussion the features implemented - Discussion with screenshot evidence of how each technical requirement is met.**  100 Points Total
+
   - **Cashier's App using Spring Security for User Authentication**
     - What features were implemented?
       - Cashier can select the type, size of the drink but also select if the customer wants to add a type of milk and/or add any toppings like whipped cream, drizzle, etc.
     - UI was based on the needs of a cashier when receiving an order and customize it based on what the customer wants.
     - Spring Boot was used to develop the cashier's app
+
   - **Backoffice Help Desk App using Spring Security for User Authentication**
     - What features were implemented?
+
   - **SSO via OKTA or other providers is a "bonus" (i.e. Extra Credit - 10 points)**
     - todo
+
   - **Online Store Front (20 points)**
     - todo
     - What features were implemented?
+
   - **REST API (20 points)**
     - Final design with sample request/response
       - This example with tRoLl CaSe is indicative of our careful use of Spring JPA Repositories, using a method called `findByDrinkIgnoreCaseAndSizeIgnoreCase` to allow for a dynamically generated database search in which both of the query predicates are case-insensitive
@@ -28,11 +33,18 @@
 ![](images/api-insomnia.png)
     - We used insomnia-plugin-default-headers to allow us to dynamically insert the Kong API secret into every request's header
 ![](images/api-insomnia-headers.png)
+
   - **Kong API Gateway or other API authentication gateway is a "bonus" (i.e. Extra Credit = 10 points)**
     - While we had a working Kong implementation, we had to remove it and switch to a standard GKE ingress because of some CORS issues which prevented external services from connecting to our API.
-    - Integrations (Payment API) (20 points)
-    - Which integrations were selected?
-      - Stripe
+    - Unfortunately, no screenshots were taken before the entire GKE cluster with our Kong implementation was deleted.  The only evidence we have left of it running on GKE is a single commit with our Kong yaml file.  Hopefully it is worth a point or two of extra credit.
+    - Our [docker-compose.yaml](docker-compose.yaml) file does have Kong working, but the frontend team had issues with Kong running in local docker as well.
+      - https://github.com/nguyensjsu/sp21-172-team-d/commit/7332b137c4a345332d93cd3b9359f0e3040d2f85
+    - ** Can someone please add a discussion of what CORS is and what problems you had with Kong running?
+
+  - **Integrations (Payment API) (20 points)**
+  - Which integrations were selected?
+    - Stripe
+
   - **Cloud Deployment (20 points)**
     - Please see the section below titled *Deployment to Google Cloud*
     - **How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?**

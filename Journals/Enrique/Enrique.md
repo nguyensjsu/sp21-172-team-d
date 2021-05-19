@@ -1,5 +1,7 @@
 # CMPE 172 Project Journal - Rusty Pedrosa (Enrique)
 
+## Pull Requests
+https://github.com/nguyensjsu/sp21-172-team-d/pulls?q=is%3Apr+author%3ARustyPedrosa
 ## Final Week
 - Since I need to redeploy to cloud anyway, I am going to see if I can utilize what we learned in the CI/CD lecture.
 - First attempt failed CI:
@@ -16,10 +18,23 @@ SpringStarbucksApiApplicationTests > contextLoads() FAILED
 ```
 - This because even the default, empty test apparently attempts to connect to the database specified in application.properties, which doesn't exist here.
   - Fix is to change the command to  `gradle build -x test`
+  
+- After significant troubles with getting Cloud sQL working, I switched focus to getting everyone's changes merged into main after some major divergence between branches.
+
 
 - I love that the PR to create the CI ran the CI so I could fix an issue with the CI
 
 ![](images/week5-ci.png)
+
+- After getting CI/CD up with the newly merged branch, suddenly CI/CD stopped working with an error about an unhealthy backend, even though all pods/services were up and running!
+
+
+- After getting charged on my personal account for GCP usage, I completely took down all of my clusters and Cloud SQL VM and everything else on my school email's GCP account to stop the high daily expenses from accruing too fast, and I started over with a single cluster running mimimum replicas of all nodes/pods.
+
+![](images/gcp-ingress-unhealthy.png)
+Note: This is NOT my screenshot, but it shows one of the errors that I had
+  - It turns out that this is a feature offered by GCE: https://stackoverflow.com/a/39297106
+  - The fix was to point our `/` path to something.  I simply redirected ours to `/ping` for now
 
 
 ## Week 4
