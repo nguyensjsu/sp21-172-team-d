@@ -24,22 +24,27 @@
 
   - **REST API (20 points)**
     - Final design with sample request/response
-      - This example with tRoLl CaSe is indicative of our careful use of Spring JPA Repositories, using a method called `findByDrinkIgnoreCaseAndSizeIgnoreCase` to allow for a dynamically generated database search in which both of the query predicates are case-insensitive
+      - For the purposes of this class, the API is exposed to the internet.  Sample URLs:
+        - http://starbucks.pedrosatech.com/api/cards
+        - http://starbucks.pedrosatech.com/api/orders
+      - This sample request/response with a tRoLl CaSe is indicative of our use of Spring JPA Repository features to create a robust backend, using method names such as `findByDrinkIgnoreCaseAndSizeIgnoreCase` to allow for a dynamically generated database search in which both of the query predicates are case-insensitive
 ![](images/api-troll.png)
     - Our API was carried over from the labs of two team members, merged together and expanded.  It includes tables/classes for `Customer`, `Drink`, `Order`, `Price` and `Register` in order to move business information out of application memory and into provide persistent storage in our database.
 ![](images/db-erd.png)
     - The API was tested via Insomnia.
+      - Our insomnia project is at [insomnia_starbucks-api.json](insomnia_starbucks-api.json)
+        - Please select the starbucks.pedrosatech.com environment
       - We used `insomnia-plugin-default-headers` to allow us to run the entire suite of tests in one click
 ![](images/api-insomnia.png)
-    - We used insomnia-plugin-default-headers to allow us to dynamically insert the Kong API secret into every request's header
+      - We used `insomnia-plugin-default-headers` to allow us to dynamically insert the Kong API secret into every request's header
 ![](images/api-insomnia-headers.png)
 
   - **Kong API Gateway or other API authentication gateway is a "bonus" (i.e. Extra Credit = 10 points)**
     - While we had a working Kong implementation, we had to remove it and switch to a standard GKE ingress because of some CORS issues which prevented external services from connecting to our API.
     - Unfortunately, no screenshots were taken before the entire GKE cluster with our Kong implementation was deleted.  The only evidence we have left of it running on GKE is a single commit with our Kong yaml file.  Hopefully it is worth a point or two of extra credit.
-    - Our [docker-compose.yaml](docker-compose.yaml) file does have Kong working, but the frontend team had issues with Kong running in local docker as well.
       - https://github.com/nguyensjsu/sp21-172-team-d/commit/7332b137c4a345332d93cd3b9359f0e3040d2f85
-    - ** Can someone please add a discussion of what CORS is and what problems you had with Kong running?
+    - Our [docker-compose.yaml](docker-compose.yaml) file does have Kong working, but the frontend team had issues with Kong running in local docker as well.
+    - **Can someone please add a discussion of what CORS is and what problems you had with Kong running?**
 
   - **Integrations (Payment API) (20 points)**
     - Which integrations were selected?
