@@ -1,4 +1,4 @@
-# Do not rename this file - the filename is used by github CI/CD
+# Do not rename this file. service.yaml in the root folder is expected by github CI/CD
 
 apiVersion: v1
 kind: Service
