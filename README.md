@@ -17,7 +17,9 @@
     - The back-office admin can also set how many rewards points each customer has.
 
   - **SSO via OKTA or other providers is a "bonus" (i.e. Extra Credit - 10 points)**
-    - todo
+    - We tried to tie in SSO through Google Firebase which would allow our users to sign in through multiple social media accounts and/or email/password.
+    - While it does work with our online store, we were unable to get it to work with Spring Security for our Cashier's app and BackOffice. (Justin went to office hours and confirmed that this would still count for the extra credit)
+    -https://firebase.google.com/docs/auth 
 
   - **Online Store Front (20 points)**
     - todo
