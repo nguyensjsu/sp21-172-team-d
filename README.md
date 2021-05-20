@@ -225,14 +225,11 @@ The first deployment we will create is for mysql. The publicly available `mysql:
 
 #### MySQL Deployment
 
-TODO: Create a mysql-deployment.yaml
-
-We use a standard mysql container with no special configuration beyond the use of environment variables. For now, you can create a deployment manually via the cloud GUI with the deploy button.
+We use a standard mysql container with no special configuration beyond the use of environment variables.  Instead of using a deplyoment.yaml, you can create a deployment via the GCP UI's deploy button.
 
 ![](images/gcp-manual-deploy.png)
 
 Enter `mysql:8.0` for the container image, and add environment variables as shown.
-TODO: Figure out how to point the API deployment to the mysql config to pick up the user/password to the database
 
 ![](images/gcp-deploy-mysql-1.png)
 
