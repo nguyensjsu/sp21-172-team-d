@@ -104,7 +104,7 @@ public class CardController {
         return card;
     }
 
-    @PostMapping("/webhook")
+    @PostMapping("/api/webhook")
     String loadCard(@RequestBody String stripeJsonEvent, @RequestHeader("Stripe-Signature") String sigHeader, HttpServletResponse response) {
         Event event = Event.GSON.fromJson(stripeJsonEvent, Event.class);
 
