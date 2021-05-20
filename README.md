@@ -14,6 +14,11 @@
     - UI was based on the needs of a cashier when receiving an order and customize it based on what the customer wants.
     - Spring Boot was used to develop the cashier's app
 
+    - Cashier Homepage
+      - starbucks logo is used as a hyperlink to map to next view
+    
+    ![](images/cashier_homepage.png)
+
   - **Backoffice Help Desk App using Spring Security for User Authentication**
     - A back-office admin that is secured through Spring Security can see all customer's points.
     - The back-office admin can also set how many rewards points each customer has.
