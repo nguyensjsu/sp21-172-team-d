@@ -11,8 +11,26 @@
 
     - What features were implemented?
       - Cashier can select the type, size of the drink but also select if the customer wants to add a type of milk and/or add any toppings like whipped cream, drizzle, etc.
+      - Spring Boot was used to develop the cashier's app
+      - Configured with Spring Security
     - UI was based on the needs of a cashier when receiving an order and customize it based on what the customer wants.
-    - Spring Boot was used to develop the cashier's app
+
+    - Currently, cashier's app does not communicate with API
+
+    - Cashier Homepage
+      - starbucks logo is used as a hyperlink to map to next view
+    
+    ![](images/cashier_homepage.png)
+
+    - Cashier Customize Drink Page
+
+    ![](images/cashier_customize_drink.png)
+
+    ![](images/cashier_example_input.png)
+
+    - Cashier Payment Page
+
+    ![](images/cashier_payment.png)
 
   - **Backoffice Help Desk App using Spring Security for User Authentication**
     - A back-office admin that is secured through Spring Security can see all customer's points.
