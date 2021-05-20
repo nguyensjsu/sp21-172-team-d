@@ -13,7 +13,8 @@
     - Spring Boot was used to develop the cashier's app
 
   - **Backoffice Help Desk App using Spring Security for User Authentication**
-    - What features were implemented?
+    - A back-office admin that is secured through Spring Security can see all customer's points.
+    - The back-office admin can also set how many rewards points each customer has.
 
   - **SSO via OKTA or other providers is a "bonus" (i.e. Extra Credit - 10 points)**
     - todo
