@@ -15,11 +15,12 @@
   - **Backoffice Help Desk App using Spring Security for User Authentication**
     - A back-office admin that is secured through Spring Security can see all customer's points.
     - The back-office admin can also set how many rewards points each customer has.
+    - ![](images/backOffice.png)
 
   - **SSO via OKTA or other providers is a "bonus" (i.e. Extra Credit - 10 points)**
     - We tried to tie in SSO through Google Firebase which would allow our users to sign in through multiple social media accounts and/or email/password.
     - While it does work with our online store, we were unable to get it to work with Spring Security for our Cashier's app and BackOffice. (Justin went to office hours and confirmed that this would still count for the extra credit)
-    -https://firebase.google.com/docs/auth 
+    - https://firebase.google.com/docs/auth 
 
   - **Online Store Front (20 points)**
     - todo
