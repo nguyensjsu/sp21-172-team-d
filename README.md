@@ -19,6 +19,16 @@
     
     ![](images/cashier_homepage.png)
 
+    - Cashier Customize Drink Page
+
+    ![](images/cashier_customize_drink.png)
+
+    ![](images/cashier_example_input.png)
+
+    - Cashier Payment Page
+
+    ![](images/cashier_payment.png)
+
   - **Backoffice Help Desk App using Spring Security for User Authentication**
     - A back-office admin that is secured through Spring Security can see all customer's points.
     - The back-office admin can also set how many rewards points each customer has.
